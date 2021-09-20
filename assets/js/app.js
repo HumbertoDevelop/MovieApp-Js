@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         .then((res) => res.json())
         .then((data) => {
             showMovies(data.results);
-
+            console.log(data.results)
 
         })
 })
@@ -45,9 +45,11 @@ function showMovies(data) {
     data.forEach(element => {
         const div = document.createElement('div');
         div.classList.add('movie');
+        div.setAttribute('id',element.id);
         const {
             title,
             poster_path,
+            release_date,
             vote_average
         } = element;
         if (element.poster_path) {
@@ -60,7 +62,8 @@ function showMovies(data) {
             </div>
             <div class="text-movie">
             <h1 class="titleMovie">${title}</h1>
-            <span class="voteMovie">Rate: ${vote_average}⭐</span>
+            <h3 class="titleMovie">Release Date: ${release_date}</h3>
+            <span class="voteMovie">Vote: ${vote_average}⭐</span>
             </div>
             `;
             fragment.append(div);

@@ -87,8 +87,7 @@ body,html{
 @media (max-width:768px){
 
     .header-content{
-        padding: 2em;
-        background-color: lawngreen;
+        padding: 0em;
     }
 
     .header-content h1{

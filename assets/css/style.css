@@ -83,7 +83,7 @@ body,html{
     
 }
 
-@media (max-width:425px){
+@media (max-width:768px){
 
     .header-content{
         padding: 2em;

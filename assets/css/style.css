@@ -24,6 +24,7 @@ body,html{
 .container{
     width: 90%;
     margin: auto;
+    overflow: hidden;
     color: var(--secondary-w);
 
 }

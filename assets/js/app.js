@@ -14,7 +14,7 @@ const searchInputValue = d.getElementById('search').value;
 const fragment = d.createDocumentFragment();
 const tagsMovies = d.querySelector('.tags');
 const iconMenu = document.querySelector('.fa-bars');
-let activeMenu = false;
+
 
 
 // DOM LOADED
@@ -103,7 +103,6 @@ function takeInfoTags(base,kind,key) {
                 showMovies(results);
                 // console.log(results)
             });
-            activeMenu = false;
             tagsMovies.classList.remove('activeTags');
         }
     
@@ -146,7 +145,6 @@ function menuHamburguer(menu,btnMenu) {
     
     
     btnMenu.addEventListener('click', (e) => {
-            activeMenu = true;
             menu.classList.toggle('activeTags');
             btnMenu.classList.toggle('clickBtn');
 

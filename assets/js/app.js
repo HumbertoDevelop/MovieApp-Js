@@ -145,6 +145,7 @@ function menuHamburguer(menu,btnMenu) {
     
     
     btnMenu.addEventListener('click', (e) => {
+            window.scrollTo(0,0);
             menu.classList.toggle('activeTags');
             btnMenu.classList.toggle('clickBtn');
 

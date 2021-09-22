@@ -103,15 +103,14 @@ function takeInfoTags(base,kind,key) {
                 showMovies(results);
                 // console.log(results)
             });
-            tagsMovies.classList.remove('activeTags');
         }
-    
+        
     })
 }
 
 // SHOW MOVIES
 function showMovies(data) {
-
+    tagsMovies.classList.remove('activeTags');
     container.innerHTML = '';
     data.forEach(el => {
         const {title,poster_path,id,original_language,overview,release_date,vote_average} = el;

@@ -20,6 +20,7 @@ a{
 
 
 :root{
+    --primary: #3c20c533;
     --primary-w: #fff;
     --secondary-c: #000;
     --secondary: #3c20c5b6;
@@ -262,7 +263,7 @@ body,html{
     }
 
     .tags .tag h3{
-        background-color:  #000;
+        background-color:  var(--primary);
         border-radius: 7px;
         font-size: 1.7rem;
         cursor: pointer;

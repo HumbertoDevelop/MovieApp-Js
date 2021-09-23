@@ -115,8 +115,9 @@ function showMovies(data) {
     data.forEach(el => {
         const {title,poster_path,id,original_language,overview,release_date,vote_average} = el;
         const div = d.createElement('div');
-        div.classList.add('movie');
-        div.innerHTML=`
+    if (poster_path) {        
+            div.classList.add('movie');
+            div.innerHTML=`
         <div class="containerTags">
         <h3 class="tag">${title}</h3>
         <img src="${getImg(poster_path)}" class="movieImg" id="${id}" alt="movieImg">
@@ -128,6 +129,7 @@ function showMovies(data) {
         <p class="vote">Vote: ${vote_average} ⭐</p>
         </div>
         `;
+    }
 
         fragment.append(div);
         container.append(fragment);

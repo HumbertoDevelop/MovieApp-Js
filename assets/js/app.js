@@ -115,7 +115,7 @@ function showMovies(data) {
     data.forEach(el => {
         const {title,poster_path,id,original_language,overview,release_date,vote_average} = el;
         const div = d.createElement('div');
-    if (poster_path) {        
+        if (poster_path && title && id && original_language && overview && release_date && vote_average) {        
             div.classList.add('movie');
             div.innerHTML=`
         <div class="containerTags">
@@ -129,12 +129,18 @@ function showMovies(data) {
         <p class="vote">Vote: ${vote_average} ⭐</p>
         </div>
         `;
-    }
-
+        
+       
         fragment.append(div);
         container.append(fragment);
+    }
+
+        
+
     });
 }
+
+
 
 // GET IMG URL
 function getImg(dataImg) {

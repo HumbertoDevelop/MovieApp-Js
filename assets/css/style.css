@@ -76,7 +76,7 @@ body,html{
     bottom: 14px;
     right: 30px;
     font-size: 2.4em;
-    z-index: 10;
+    z-index: 4000;
     cursor: pointer;
     color: var(--primary-w);
 }
@@ -181,6 +181,7 @@ body,html{
     font-weight: bolder;
     border-radius: 10px;
     font-size: 1.5rem;
+    text-align: center;
     padding: 1em;
     margin: .7em;
     letter-spacing: 1.9pt;
@@ -197,7 +198,7 @@ body,html{
 .boxbtn{
     cursor: pointer;
     position: fixed;
-    z-index: 10;
+    z-index: 3000;
     top: 2.4em;
     right: 4.6em;
     font-size: 2.4em;
@@ -216,6 +217,10 @@ body,html{
 .boxbtn:hover{
     color: var(--secondary-c);
 }
+
+
+
+
 
 @media (min-width: 768px){
     .container{
@@ -241,7 +246,6 @@ body,html{
         bottom: 0px;
         right: -30px;
         font-size: 2.4em;
-        z-index: 10;
         cursor: pointer;
         color: var(--primary-w);
     }
@@ -288,7 +292,54 @@ body,html{
         gap: 0 15px;
     }
 
+    /* Videos */
+
+    .myIcon-openMenu{
+        position: absolute;
+        z-index: 6000;
+        bottom: 30px;
+        right: 60px;
+        background-color: black;
+        border-radius: 8px;
+        width: 80px;
+        height: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transform: translateX(-3000px);
+        transition: 2s ease-in-out;
+        cursor: pointer;
+    }
+
   
+
+    .activeIcon{
+        transform: translateX(0px);
+    }
+
+
+    .videos{
+        position: relative;
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(2,1fr);
+        justify-items: center;
+        align-items: center;
+        justify-content: space-between;
+        background-color: var(--primary-w);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 5000;
+        width: 0;
+        transition: 1.2s ease-in-out;
+    }
+
+    .videosActive{
+        width: 100%;
+    }
    
 }
 

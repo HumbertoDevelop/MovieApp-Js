@@ -97,7 +97,7 @@ html {
     flex-direction: column;
 }
 
-.movie {
+.container-main .movie {
     position: relative;
     height: 100%;
 }
@@ -106,8 +106,8 @@ html {
     height: 100%;
 }
 
-
-.card-movie {
+/* CARD MOVIE */
+.movie .card-movie {
     position: absolute;
     bottom: 0px;
     left: 0;

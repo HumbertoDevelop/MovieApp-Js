@@ -175,7 +175,7 @@ function showMovies(data) {
                 <p>Release: ${release_date}</p>
                 </div>
                 <div class="rate-movie">
-                <p>${numberRound(vote_average)}</p>
+                <button id="trailer">Trailer</button>
                 </div>
                 </div>
                 </section>

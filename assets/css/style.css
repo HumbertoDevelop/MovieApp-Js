@@ -160,6 +160,24 @@ html {
     padding: 0 .3em;
 }
 
+/* BUTTON TRAILER */
+
+#trailer{
+    border: none;
+    outline: none;
+    background-color: var(--middle-blue);
+    color: var(--gray-light);
+    padding: 1em 1.3em;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+#trailer:hover{
+    background-color: var(--gray-light);
+    color: var(--gray);
+}
+
+
 
 /* EFECTS */
 

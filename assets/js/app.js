@@ -9,6 +9,7 @@ const fragment = d.createDocumentFragment();
 const searchInput = d.getElementById('search');
 const container = d.querySelector('.container-main');
 const tagsMovies = d.querySelector('.tags');
+const searchIcon = d.getElementById('iconSerch');
 const log = console.log;
 
 
@@ -42,20 +43,22 @@ d.addEventListener('DOMContentLoaded', () => {
 // SELECT MOVIE
 
 function movieSelect() {
-    
+
     d.addEventListener('click', (e) => {
         // log(e.target);
         // log(e.target.parentElement.classList.value);
-        
+
         if (e.target.matches('.tag h3')) {
             const path = '/genre/movie/list';
-            const currentQuery = e.target.textContent; 
+            const currentQuery = e.target.textContent;
             // log(path,currentQuery)
-            getUrlQuery(path,currentQuery);
+            getUrlQuery(path, currentQuery);
             // log(e.target)
         }
 
-       
+        if (e.target.matches('#iconSearch')) {
+            log(e.target);
+        }
 
 
         /* log(e.target);
@@ -69,17 +72,17 @@ function movieSelect() {
 
     searchInput.addEventListener('keyup', (e) => {
         const currentQuery = searchInput.value;
-        const path =  '/search/movie' ;
-    
+        const path = '/search/movie';
+
         if (e.key === 'Enter') {
             // log(currentQuery);
-            
-           getUrlQuery(path,currentQuery)
-           
+
+            getUrlQuery(path, currentQuery)
+
         }
     })
 
-    
+
 }
 
 
@@ -93,12 +96,12 @@ function getUrl(path) {
             // log(data)
 
             if (path === POPULARITY_URL) {
-                
+
                 const results = data.results;
                 showMovies(results);
                 // log(results)
-            }else if(path === genres){               
-                
+            } else if (path === genres) {
+
                 const results = data.genres;
                 // showTags(results);
                 // log(results)
@@ -108,17 +111,17 @@ function getUrl(path) {
 
 }
 
- function getUrlQuery(path,query) {
-     const url = `https://api.themoviedb.org/3${path}?api_key=1cf50e6248dc270629e802686245c2c8&query=${query}`;
-        // log(url);
-        fetch(url)
+function getUrlQuery(path, query) {
+    const url = `https://api.themoviedb.org/3${path}?api_key=1cf50e6248dc270629e802686245c2c8&query=${query}`;
+    // log(url);
+    fetch(url)
         .then((res) => res.json())
         .then((data) => {
             // log(`DATA URL QUERY: ${data.genres}`);
             if (data.results) {
                 const url = data.results;
                 showMovies(url);
-            } 
+            }
 
 
             //  if (data.genres) {
@@ -128,7 +131,7 @@ function getUrl(path) {
             // }
         });
 
- }
+}
 
 
 // SHOW MOVIES
@@ -136,24 +139,24 @@ function showMovies(data) {
     // tagsMovies.classList.remove('activeTags');
     // log(data);
     // log(data);
-    
-    
+
+    log(data)
     container.innerHTML = '';
-        data.forEach(el => {
-            const {
-                title,
-                poster_path,
-                id,
-                original_language,
-                release_date,
-                overview,
-                vote_average
-            } = el;
-            const div = d.createElement('div');
-            // log(poster_path)
-            if (poster_path && title && original_language && id && release_date && overview && vote_average) {
-                div.classList.add('movie');
-                div.innerHTML = `
+    data.forEach(el => {
+        const {
+            title,
+            poster_path,
+            id,
+            original_language,
+            release_date,
+            overview,
+            vote_average
+        } = el;
+        const div = d.createElement('div');
+        // log(poster_path)
+        if (poster_path && id && title && original_language && vote_average && release_date && overview) {
+            div.classList.add('movie');
+            div.innerHTML = `
                 
                 <img src="${getImg(poster_path)}" class="img-bg" id="${id}" alt="">
                 <div class="card-movie">
@@ -168,26 +171,78 @@ function showMovies(data) {
                 <div class="body-card">
                 <div class="info-movie">
                 <p class="language">Language: ${original_language}</p>
-                <p class="overview"> ${overview}</p>
+                <p class="start">${getStar(vote_average)}</p>
                 <p>Release: ${release_date}</p>
                 </div>
                 <div class="rate-movie">
-                <p>${vote_average}</p>
+                <p>${numberRound(vote_average)}</p>
                 </div>
                 </div>
                 </section>
                 </div>
                 `;
-                log(div)
+            // log(div)
 
-                fragment.append(div);
-                container.append(fragment);
-            }
+            fragment.append(div);
+            container.append(fragment);
+        }
 
 
 
-        });
- 
+    });
+
+}
+
+// number round
+function numberRound(vote) {
+    return Math.floor(vote);
+}
+
+// stars movie
+function getStar(vote) {
+
+    let txt;
+    switch (numberRound(vote)) {
+        case 0:
+            txt = 'No ranking yet';
+            break;
+        case 1:
+            txt = '⭐';
+            break;
+        case 2:
+            txt = '⭐⭐';
+            break;
+        case 3:
+            txt = '⭐⭐⭐';
+            break;
+        case 4:
+            txt = '⭐⭐⭐⭐';
+            break;
+        case 5:
+            txt = '⭐⭐⭐⭐⭐';
+            break;
+        case 6:
+            txt = '⭐⭐⭐⭐⭐⭐';
+            break;
+        case 7:
+            txt = '⭐⭐⭐⭐⭐⭐⭐';
+            break;
+        case 8:
+            txt = '⭐⭐⭐⭐⭐⭐⭐⭐';
+            break;
+        case 9:
+            txt = '⭐⭐⭐⭐⭐⭐⭐⭐⭐';
+            break;
+        case 10:
+            txt = '⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐';
+            break;
+
+        default:
+
+            txt = 'No ranking yet';
+            break;
+    }
+    return txt;
 }
 
 // GET IMG URL
@@ -214,33 +269,33 @@ function getImg(dataImg) {
 // }
 
 // function showVideos(data) {
-    
-    //     const url = 
-    //     data.forEach(el => {
-    //         const {} = el;
-            
-    //         if () {       
-    //             videosSelector.innerHTML=
-    //             `
-    //             <div class="videos-img">
-    //                 <img src="./pexels-kenneth-3020635.jpg" alt="">
-    //             </div>
-    
-    //             <div class="videos-box">
-    
-    //                 <iframe width="420" height="345" src="">
-    //                 </iframe>
-    //             </div>
-    //             `;
-    // }
 
-    
+//     const url = 
+//     data.forEach(el => {
+//         const {} = el;
+
+//         if () {       
+//             videosSelector.innerHTML=
+//             `
+//             <div class="videos-img">
+//                 <img src="./pexels-kenneth-3020635.jpg" alt="">
+//             </div>
+
+//             <div class="videos-box">
+
+//                 <iframe width="420" height="345" src="">
+//                 </iframe>
+//             </div>
+//             `;
+// }
+
+
 // EFECTS
 
 // MENU BURGUER
 // function menuHamburguer(menu,btnMenu) {
-    
-    
+
+
 //     btnMenu.addEventListener('click', (e) => {
 //             window.scrollTo(0,0);
 //             menu.classList.toggle('activeTags');
@@ -250,7 +305,7 @@ function getImg(dataImg) {
 // }
 
 // function showVideosMenu(menu,icon) {
-    
+
 
 //     d.addEventListener('click', (e) => {
 //         // console.log(e.target.tagName === 'IMG')
@@ -259,7 +314,7 @@ function getImg(dataImg) {
 //                 getVideos();
 //                 menu.classList.toggle('videosActive');
 //                 icon.classList.add('activeIcon');
-        
+
 //         }
 
 //         if (e.target.id === 'myIcon') {
@@ -268,5 +323,5 @@ function getImg(dataImg) {
 //         }
 //     })
 
-    
+
 // } 

@@ -9,7 +9,6 @@ const fragment = d.createDocumentFragment();
 const searchInput = d.getElementById('search');
 const container = d.querySelector('.container-main');
 const tagsMovies = d.querySelector('.tags');
-const searchIcon = d.getElementById('iconSerch');
 const log = console.log;
 
 
@@ -45,7 +44,7 @@ d.addEventListener('DOMContentLoaded', () => {
 function movieSelect() {
 
     d.addEventListener('click', (e) => {
-        // log(e.target);
+        log(e.target);
         // log(e.target.parentElement.classList.value);
 
         if (e.target.matches('.tag h3')) {
@@ -58,6 +57,16 @@ function movieSelect() {
 
         if (e.target.matches('#iconSearch')) {
             log(e.target);
+        }
+
+        if (e.target.matches('.trailer')) {
+            const trailerId = e.target.id;
+            const path = `/movie/${trailerId}/videos`;
+            // log(trailerId);
+
+            getUrl(path);
+
+
         }
 
 
@@ -89,11 +98,10 @@ function movieSelect() {
 
 function getUrl(path) {
     const url = `https://api.themoviedb.org/3${path}?api_key=1cf50e6248dc270629e802686245c2c8`;
-
     fetch(url)
         .then((res) => res.json())
         .then((data) => {
-            // log(data)
+            // log(data);
 
             if (path === POPULARITY_URL) {
 
@@ -105,6 +113,10 @@ function getUrl(path) {
                 const results = data.genres;
                 // showTags(results);
                 // log(results)
+            } else {
+                const result = data.results;
+                // log(result);
+                showTrailer(result);
             }
 
         });
@@ -158,7 +170,7 @@ function showMovies(data) {
             div.classList.add('movie');
             div.innerHTML = `
                 
-                <img src="${getImg(poster_path)}" class="img-bg" id="${id}" alt="">
+                <img src="${getImg(poster_path)}" class="img-bg" alt="">
                 <div class="card-movie">
                 <div class="img-card">
                 <img src="${getImg(poster_path)}" alt="">
@@ -172,10 +184,10 @@ function showMovies(data) {
                 <div class="info-movie">
                 <p class="language">Language: ${original_language}</p>
                 <p class="start">${getStar(vote_average)}</p>
-                <p>Release: ${release_date}</p>
+                <p >Release: ${release_date}</p>
                 </div>
                 <div class="rate-movie">
-                <button id="trailer">Trailer</button>
+                <button class="trailer" id="${id}">Trailer</button>
                 </div>
                 </div>
                 </section>
@@ -268,26 +280,36 @@ function getImg(dataImg) {
 //     });
 // }
 
-// function showVideos(data) {
 
-//     const url = 
-//     data.forEach(el => {
-//         const {} = el;
+// SHOW TRAILER
+function showTrailer(video) {
+    // const div = d.createElement('div');
+    // div.setAttribute('class', "trailer-box");
+    // div.classList.toggle('activeFrame');
+    // div.innerHTML = '';
+    let cont = 0;
 
-//         if () {       
-//             videosSelector.innerHTML=
-//             `
-//             <div class="videos-img">
-//                 <img src="./pexels-kenneth-3020635.jpg" alt="">
-//             </div>
 
-//             <div class="videos-box">
+    video.forEach(srcVideo => {
+        if (cont < 1) {
 
-//                 <iframe width="420" height="345" src="">
-//                 </iframe>
-//             </div>
-//             `;
-// }
+            // const iframe = d.createElement('iframe');
+            const link = srcVideo.key;
+            let newTab = `https://www.youtube.com/embed/${link}`;
+            // iframe.src = `https://www.youtube.com/embed/${link}`;
+            window.open(newTab,'_blank');
+            // iframe.width = 150;
+            // iframe.height = 150;
+            // div.append(iframe);
+            // fragment.append(div);
+            cont++;
+        }
+
+
+    })
+    // container.append(fragment);
+
+}
 
 
 // EFECTS

@@ -38,6 +38,8 @@ html {
     background-color: var(--dark-blue);
     opacity: .8;
     min-width: max-content;
+    display: flex;
+    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
@@ -61,10 +63,11 @@ html {
 .fa-search {
     font-size: 1.7em;
     cursor: pointer;
+    /* display: none; */
 }
 
 #search {
-    display: none;
+    display: block;
 }
 
 /* MOVIE MAIN */

@@ -22,6 +22,7 @@ img {
 
 body,
 html {
+    scroll-behavior: smooth;
     background-color: var(--middle-blue);
     overflow-x: hidden;
     font-size: 10px;
@@ -234,7 +235,7 @@ html {
 
 
     .card-movie {
-      
+      display: none;
     }
 
     

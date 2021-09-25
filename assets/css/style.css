@@ -38,7 +38,6 @@ html {
     background-color: var(--dark-blue);
     opacity: .8;
     min-width: max-content;
-    padding: .5em 4em;
     position: fixed;
     top: 0;
     left: 0;
@@ -47,11 +46,10 @@ html {
 }
 
 .menu {
-    width: 80%;
-    margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: .4rem 3rem;
 }
 
 /* LOGO */

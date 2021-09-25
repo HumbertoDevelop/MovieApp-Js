@@ -20,6 +20,11 @@ img {
     width: 100%;
 }
 
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
 body,
 html {
     scroll-behavior: smooth;
@@ -37,9 +42,6 @@ html {
 .container-header {
     background-color: var(--dark-blue);
     opacity: .8;
-    min-width: max-content;
-    display: flex;
-    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
@@ -47,27 +49,44 @@ html {
     z-index: 100;
 }
 
-.menu {
+.container-header .menu {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    padding: .4rem 2rem;
+    position: relative;
 }
 
 /* LOGO */
 
-.logo {
-    font-size: 2.3rem;
+.container-header .menu .logo {
+    font-size: 1.6rem;
 }
 
-.fa-search {
-    /* font-size: 1.7em;
-    cursor: pointer; */
-    /* display: none; */
+/* SEARCH */
+
+
+.container-header .menu .search .fa-search {
+    float: right;
+    font-size: 1.3em;
+    cursor: pointer;
 }
 
-#search {
-    display: block;
+.container-header .menu .search #search {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-bottom: 1px solid var(--gray-light);
+    color: var(--gray-light);
+    font-size: 1.3rem;
+    text-transform: capitalize;
+    font-weight: bold;
+    
+    transition: 1s ease-in-out;
+}
+
+.container-header .menu .search #search:focus {
+    background-color: transparent;
+    width: 90%;
 }
 
 /* MOVIE MAIN */
@@ -100,7 +119,6 @@ html {
     width: 95%;
     margin: auto;
     height: 130px;
-    margin: auto;
     font-size: 1rem;
     opacity: .9;
     background-color: var(--dark-blue);

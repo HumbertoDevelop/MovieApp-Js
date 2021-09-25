@@ -44,7 +44,7 @@ d.addEventListener('DOMContentLoaded', () => {
 function movieSelect() {
 
     d.addEventListener('click', (e) => {
-        log(e.target);
+        // log(e.target);
         // log(e.target.parentElement.classList.value);
 
         if (e.target.matches('.tag h3')) {
@@ -55,9 +55,6 @@ function movieSelect() {
             // log(e.target)
         }
 
-        if (e.target.matches('#iconSearch')) {
-            log(e.target);
-        }
 
         if (e.target.matches('.trailer')) {
             const trailerId = e.target.id;
@@ -66,7 +63,11 @@ function movieSelect() {
 
             getUrl(path);
 
+        }
 
+        if (e.target.matches('.fa-search')) {
+            searchInput.className = 'activeInputSearch';
+            log('searchInput');
         }
 
 

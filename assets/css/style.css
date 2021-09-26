@@ -86,7 +86,6 @@ html {
 
 .container-header .menu .search #search:focus {
     background-color: transparent;
-    width: 90%;
 }
 
 /* MOVIE MAIN */

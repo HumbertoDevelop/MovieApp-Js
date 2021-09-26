@@ -37,6 +37,7 @@ html {
 .container{
     color: var(--white);
     height: 100vh;
+    
 }
 
 /* HEADER */
@@ -92,6 +93,7 @@ html {
 /* MOVIE MAIN */
 
 .container-main {
+    
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -133,7 +135,7 @@ html {
 }
 
 .img-card img {
-    object-fit: cover;
+    object-fit: fill;
     cursor: pointer;
     height: 100%;
 }
@@ -206,22 +208,22 @@ html {
 
 
 /* EFECTS */
-
-/* .activeDescription{
-    background-color: rgba(0, 0, 0, .5);
+.active2{
     position: absolute;
+    z-index: 50;
     top: 0;
-    left: 0;
     right: 0;
+    left: 0;
     bottom: 0;
-    z-index: 5000;
-    display: none;
-} */
+    font-size: 4em;
+    width: 50%;
+    background-color: black;
+    /* opacity: .6; */
+    margin: auto;
+    height: 100vh;
+}
 
-/* .itemOpen{
-    transform: ;
 
-} */
 
 /* MEDIA QUERIES */
 
@@ -322,38 +324,55 @@ html {
         display: flex;
         flex-direction: column;
         width: 100%;
+        background-color: var(--dark-blue);
     }
+
 
     /* MOVIE MAIN */
     .container-header{
-        width: 100%;
+        width: max-content;
+        margin: initial;
+        background-color: transparent;
         display: flex;
-        justify-content: space-between;
+        justify-content: initial;
+        position: absolute;
+        top: 50px;
+        left: 20px;
     }
-
+    
     .container-header .menu{
         width: 100%;
         display: flex;
         margin: auto;
     }
-
+    
     .container-header .menu .logo{
         display: none;
     }
     
     .main{
-        overflow-x: scroll;
         width: 100%;
     }
-
+    
+    .container-main::-webkit-scrollbar{
+        height: 0px;
+    }
+    
+    
     .container-main {
+        overflow-x: scroll;
         /* height: 30em; */
-        /* max-width: 100%; */
+        max-width: 100%;
         display: flex;
         flex-direction: row;
+        position: absolute;
+        z-index: 2000;
+        bottom: -20px;
+        left: 0;
+        right: 0;
         /* width: 100%; */
         margin: initial;
-        gap: 0 100px;
+        gap: 0 30px;
     }
 
     
@@ -412,11 +431,11 @@ html {
         font-size: 1.37rem;
         display: block;
         overflow-y: hidden;
-        transition: 2s ease-in-out;
+        transition: none;
     }
     
     .overview:hover{
-        font-size: 0;
+        font-size: initial;
     }
     .card-movie:hover{
         height: 0;

@@ -1,6 +1,6 @@
 [{
     "adult": false,
-    "backdrop_path": "/jlGmlFOcfo8n5tURmhC7YVd4Iyy.jpg",
+    "backdrop_path": "../img/fondo.jpeg",
     "genre_ids": (4)[28, 12, 14, 35],
     "id": 436969,
     "original_language": "en",
@@ -14,4 +14,6 @@
     "vote_average": 7.9,
     "vote_count": 4032
 
-}]
+},
+
+]

@@ -8,7 +8,9 @@ const genres = '/genre/movie/list';
 const fragment = d.createDocumentFragment();
 const searchInput = d.getElementById('search');
 const container = d.querySelector('.container-main');
+const containerMain = d.querySelector('.container');
 const tagsMovies = d.querySelector('.tags');
+const divEfect = d.querySelector('.div'); 
 const log = console.log;
 
 
@@ -19,16 +21,10 @@ d.addEventListener('DOMContentLoaded', () => {
     try {
 
 
-        getUrl(POPULARITY_URL);
         getUrl(genres);
+        getUrl(POPULARITY_URL);
         movieSelect();
         
-        // getUrl(genres);
-        // movieSelect();
-        // infoLoaded(POPULARITY_URL);
-        // infoLoaded(genres);
-        // showVideosMenu(videosSelector,myIconMenu);
-        // menuHamburguer(tagsMovies,iconMenu);
 
 
 
@@ -38,7 +34,6 @@ d.addEventListener('DOMContentLoaded', () => {
     }
 })
 
-// EFECT
 
 // SELECT MOVIE
 
@@ -46,41 +41,30 @@ function movieSelect() {
 
     d.addEventListener('click', (e) => {
         // log(e.target);
-        // log(e.target.parentElement.classList.value);
 
         if (e.target.matches('.tag h3')) {
             const path = '/genre/movie/list';
             const currentQuery = e.target.textContent;
-            // log(path,currentQuery)
             getUrlQuery(path, currentQuery);
-            // log(e.target)
         }
 
 
         if (e.target.matches('.trailer')) {
             const trailerId = e.target.id;
             const path = `/movie/${trailerId}/videos`;
-            // log(trailerId);
 
             getUrl(path);
 
         }
 
-        if (e.target.matches('.img-card img')) {
-            const targetEfect = d.querySelector('.img-bg');
-            getEfectDescription(targetEfect);
+        if (e.target.matches('.img-bg-desktop')) {
+            const targetSrc = e.target.src;
+            
+            getBackground(targetSrc);        
+            // log(container)
+            // log(targetSrc)
+
         }
-
-
-
-
-        /* log(e.target);
-
-        if (e.target.id) {
-            const idMovie = e.target.id;
-            const videos = `/movie/${idMovie}/videos`;
-            infoLoaded(videos);
-        } */
     })
 
     // function getEfectDescription(targetEfect) {
@@ -106,6 +90,25 @@ function movieSelect() {
 
 }
 
+function getBackground(src) {
+// log(src)
+// const img = d.querySelector('.active2');
+const targetDiv = containerMain;
+const div = divEfect;
+// log(targetDiv)
+
+    if (!div.hasChildNodes()) {   
+        
+        const imgBg = d.createElement('img');
+        imgBg.src = src;
+        imgBg.classList.add('active2');
+        div.append(imgBg);
+    }else{
+       div.querySelector('.active2').src = src;
+    }
+
+}
+
 
 
 function getUrl(path) {
@@ -124,7 +127,7 @@ function getUrl(path) {
 
                 const results = data.genres;
                 // showTags(results);
-                // log(results)
+                log(results)
             } else {
                 const result = data.results;
                 // log(result);
@@ -141,18 +144,17 @@ function getUrlQuery(path, query) {
     fetch(url)
         .then((res) => res.json())
         .then((data) => {
-            // log(`DATA URL QUERY: ${data.genres}`);
             if (data.results) {
                 const url = data.results;
                 showMovies(url);
             }
 
 
-            //  if (data.genres) {
-            //     const url = data.genres;
-            //     showMovies(url);
+             if (data.genres) {
+                const url = data.genres;
+                showMovies(url);
 
-            // }
+            }
         });
 
 }
@@ -160,9 +162,6 @@ function getUrlQuery(path, query) {
 
 // SHOW MOVIES
 function showMovies(data) {
-    // tagsMovies.classList.remove('activeTags');
-    // log(data);
-    // log(data);
 
     // log(data)
     container.innerHTML = '';
@@ -182,7 +181,7 @@ function showMovies(data) {
             div.classList.add('movie');
             div.innerHTML = `
                 
-                <img src="${getImg(poster_path)}" class="img-bg" alt="">
+                <img src="${getImg(poster_path)}" class="img-bg img-bg-desktop" alt="">
                 <div class="card-movie">
                 <div class="img-card">
                 <img src="${getImg(poster_path)}" alt="">
@@ -206,7 +205,6 @@ function showMovies(data) {
                 </section>
                 </div>
                 `;
-            // log(div)
 
             fragment.append(div);
             container.append(fragment);
@@ -279,65 +277,36 @@ function getImg(dataImg) {
 // SHOW TAGS
 // function showTags(data) {
 
+//     const div = d.createElement('div');
+//     div.classList.add('btn-categories');
 //     data.forEach(el => {
-//         // log(el)
+//         log(el);
 //         const {id,name} = el;
 //         const h3 = d.createElement('h3');
-//         const div = d.createElement('div');
-//         div.classList.add('tag');
-//         div.setAttribute('id',id);
+//         h3.setAttribute('id',id);
 //         h3.textContent = name;
-//         div.append(h3)
-//         fragment.append(div);
-//         tagsMovies.append(fragment);
+//         div.append(h3);
+//         fragment.append(fragment);
 //     });
+//     container.append(fragment);
 // }
 
 
 // SHOW TRAILER
 function showTrailer(video) {
-    // const div = d.createElement('div');
-    // div.setAttribute('class', "trailer-box");
-    // div.classList.toggle('activeFrame');
-    // div.innerHTML = '';
     let cont = 0;
-     log(video.length);
-    // return log(Math.round(Math.random()*video.length));
-    for (let i = Math.random()*video.length; i <= video.length; i++) {
-        
+    log(video.length);
+    for (let i = Math.random() * video.length; i <= video.length; i++) {
+
         if (cont < 1) {
 
-                    // const iframe = d.createElement('iframe');
-                    const link = srcVideo.key;
-                    let newTab = `https://www.youtube.com/embed/${link}`;
-                    // iframe.src = `https://www.youtube.com/embed/${link}`;
-                    window.open(newTab, '_blank');
-                    // iframe.width = 150;
-                    // iframe.height = 150;
-                    // div.append(iframe);
-                    // fragment.append(div);
-                    cont++;
-                }
+            const link = srcVideo.key;
+            let newTab = `https://www.youtube.com/embed/${link}`;
+            window.open(newTab, '_blank');
+            cont++;
+        }
     }
-    // video.forEach(srcVideo => {
-    //     if (cont < 1) {
-
-    //         // const iframe = d.createElement('iframe');
-    //         const link = srcVideo.key;
-    //         let newTab = `https://www.youtube.com/embed/${link}`;
-    //         // iframe.src = `https://www.youtube.com/embed/${link}`;
-    //         window.open(newTab, '_blank');
-    //         // iframe.width = 150;
-    //         // iframe.height = 150;
-    //         // div.append(iframe);
-    //         // fragment.append(div);
-    //         cont++;
-    //     }
-
-
-    // })
-    // container.append(fragment);
-
+   
 }
 
 
@@ -355,24 +324,3 @@ function showTrailer(video) {
 //     });
 // }
 
-// function showVideosMenu(menu,icon) {
-
-
-//     d.addEventListener('click', (e) => {
-//         // console.log(e.target.tagName === 'IMG')
-//         if (e.target.tagName === 'IMG') {
-
-//                 getVideos();
-//                 menu.classList.toggle('videosActive');
-//                 icon.classList.add('activeIcon');
-
-//         }
-
-//         if (e.target.id === 'myIcon') {
-//             icon.classList.remove('activeIcon');
-//             menu.classList.remove('videosActive');
-//         }
-//     })
-
-
-// } 

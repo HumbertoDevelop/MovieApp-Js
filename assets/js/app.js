@@ -22,32 +22,7 @@ d.addEventListener('DOMContentLoaded', () => {
         getUrl(POPULARITY_URL);
         getUrl(genres);
         movieSelect();
-        window.addEventListener('load', () => {
-            log('El contenido ha cargado!');
-            const url = `https://api.themoviedb.org/3${POPULARITY_URL}?api_key=1cf50e6248dc270629e802686245c2c8`;
-            fetch(url)
-                .then((res) => res.json())
-                .then((data) => {
-                    // log(data);
-
-                    if (path === POPULARITY_URL) {
-
-                        const results = data.results;
-                        showMovies(results);
-                        // log(results)
-                    } else if (path === genres) {
-
-                        const results = data.genres;
-                        // showTags(results);
-                        // log(results)
-                    } else {
-                        const result = data.results;
-                        // log(result);
-                        showTrailer(result);
-                    }
-
-                });
-        })
+        
         // getUrl(genres);
         // movieSelect();
         // infoLoaded(POPULARITY_URL);
@@ -189,7 +164,7 @@ function showMovies(data) {
     // log(data);
     // log(data);
 
-    log(data)
+    // log(data)
     container.innerHTML = '';
     data.forEach(el => {
         const {
@@ -326,25 +301,41 @@ function showTrailer(video) {
     // div.classList.toggle('activeFrame');
     // div.innerHTML = '';
     let cont = 0;
-
-
-    video.forEach(srcVideo => {
+     log(video.length);
+    // return log(Math.round(Math.random()*video.length));
+    for (let i = Math.random()*video.length; i <= video.length; i++) {
+        
         if (cont < 1) {
 
-            // const iframe = d.createElement('iframe');
-            const link = srcVideo.key;
-            let newTab = `https://www.youtube.com/embed/${link}`;
-            // iframe.src = `https://www.youtube.com/embed/${link}`;
-            window.open(newTab, '_blank');
-            // iframe.width = 150;
-            // iframe.height = 150;
-            // div.append(iframe);
-            // fragment.append(div);
-            cont++;
-        }
+                    // const iframe = d.createElement('iframe');
+                    const link = srcVideo.key;
+                    let newTab = `https://www.youtube.com/embed/${link}`;
+                    // iframe.src = `https://www.youtube.com/embed/${link}`;
+                    window.open(newTab, '_blank');
+                    // iframe.width = 150;
+                    // iframe.height = 150;
+                    // div.append(iframe);
+                    // fragment.append(div);
+                    cont++;
+                }
+    }
+    // video.forEach(srcVideo => {
+    //     if (cont < 1) {
+
+    //         // const iframe = d.createElement('iframe');
+    //         const link = srcVideo.key;
+    //         let newTab = `https://www.youtube.com/embed/${link}`;
+    //         // iframe.src = `https://www.youtube.com/embed/${link}`;
+    //         window.open(newTab, '_blank');
+    //         // iframe.width = 150;
+    //         // iframe.height = 150;
+    //         // div.append(iframe);
+    //         // fragment.append(div);
+    //         cont++;
+    //     }
 
 
-    })
+    // })
     // container.append(fragment);
 
 }

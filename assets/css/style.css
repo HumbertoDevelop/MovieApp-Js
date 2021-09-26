@@ -184,6 +184,20 @@ html {
     padding: 0 .3em;
 }
 
+/* BTN TRAILER */
+
+.trailer{
+    padding: .7em;
+    background-color: var(--gray-light);
+    color: var(--middle-blue);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: .5pt;
+}
+
 /* SLIDER MOVIE */
 
 .slider-movie{

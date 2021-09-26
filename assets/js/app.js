@@ -22,6 +22,32 @@ d.addEventListener('DOMContentLoaded', () => {
         getUrl(POPULARITY_URL);
         getUrl(genres);
         movieSelect();
+        window.addEventListener('load', () => {
+            log('El contenido ha cargado!');
+            const url = `https://api.themoviedb.org/3${POPULARITY_URL}?api_key=1cf50e6248dc270629e802686245c2c8`;
+            fetch(url)
+                .then((res) => res.json())
+                .then((data) => {
+                    // log(data);
+
+                    if (path === POPULARITY_URL) {
+
+                        const results = data.results;
+                        showMovies(results);
+                        // log(results)
+                    } else if (path === genres) {
+
+                        const results = data.genres;
+                        // showTags(results);
+                        // log(results)
+                    } else {
+                        const result = data.results;
+                        // log(result);
+                        showTrailer(result);
+                    }
+
+                });
+        })
         // getUrl(genres);
         // movieSelect();
         // infoLoaded(POPULARITY_URL);
@@ -64,13 +90,13 @@ function movieSelect() {
             getUrl(path);
 
         }
-        
+
         if (e.target.matches('.img-card img')) {
             const targetEfect = d.querySelector('.img-bg');
             getEfectDescription(targetEfect);
         }
 
-        
+
 
 
         /* log(e.target);
@@ -194,8 +220,9 @@ function showMovies(data) {
                 <div class="body-card">
                 <div class="info-movie">
                 <p class="language">Language: ${original_language}</p>
-                <p class="start">${getStar(vote_average)}</p>
-                <p >Release: ${release_date}</p>
+                <p class="overview">${overview}</p>
+                <p class="star">${getStar(vote_average)}</p>
+                <p class="release">Release: ${release_date}</p>
                 </div>
                 <div class="rate-movie">
                 <button class="trailer" id="${id}">Trailer</button>
@@ -308,7 +335,7 @@ function showTrailer(video) {
             const link = srcVideo.key;
             let newTab = `https://www.youtube.com/embed/${link}`;
             // iframe.src = `https://www.youtube.com/embed/${link}`;
-            window.open(newTab,'_blank');
+            window.open(newTab, '_blank');
             // iframe.width = 150;
             // iframe.height = 150;
             // div.append(iframe);

@@ -64,11 +64,13 @@ function movieSelect() {
             getUrl(path);
 
         }
-
-        if (e.target.matches('.fa-search')) {
-            searchInput.className = 'activeInputSearch';
-            log('searchInput');
+        
+        if (e.target.matches('.img-card img')) {
+            const targetEfect = d.querySelector('.img-bg');
+            getEfectDescription(targetEfect);
         }
+
+        
 
 
         /* log(e.target);
@@ -79,6 +81,14 @@ function movieSelect() {
             infoLoaded(videos);
         } */
     })
+
+    // function getEfectDescription(targetEfect) {
+    //     const divEfect = d.createElement('div');
+    //     divEfect.classList.toggle('activeDescription');
+    //     targetEfect.append(divEfect);
+
+    //     log('img grande '+targetEfect);
+    // }
 
     searchInput.addEventListener('keyup', (e) => {
         const currentQuery = searchInput.value;

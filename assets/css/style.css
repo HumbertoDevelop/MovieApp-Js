@@ -80,7 +80,6 @@ html {
     font-size: 1.3rem;
     text-transform: capitalize;
     font-weight: bold;
-    
     transition: 1s ease-in-out;
 }
 
@@ -227,6 +226,16 @@ html {
 
 /* EFECTS */
 
+/* .activeDescription{
+    background-color: rgba(0, 0, 0, .5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5000;
+    display: none;
+} */
 
 /* .itemOpen{
     transform: ;
@@ -244,16 +253,9 @@ html {
     /* HEADER */
 
     .container-header {
-        padding: .5em 4em;
         position: initial;
-        z-index: 0;
-        width: 80%;
         margin: auto;
     }
-
-
-
-
 
     .fa-search {
         font-size: 1.7em;
@@ -283,29 +285,50 @@ html {
         color: var(--white);
     }
 
-    .movie {
-        position: initial;
+    /* CARD MOVIE */
+    .movie .card-movie {
+        display: flex;
+        /* line-height: 1.2; */
+        /* justify-content: space-between; */
+        border-radius: 0px;
+        width: 100%;
+        margin: auto;
+        height: auto;
+        font-size: .4rem;
+        opacity: .9;
+        background-color: var(--dark-blue);
+        color: var(--gray-light);
     }
 
-    .movie:hover {
-        background-color: var(--gray-light);
-    }
-
-    .container-main .movie .img-bg {
-
-        height: initial;
-    }
-
-
-    .card-movie {
-      display: none;
-    }
-
-    
     /* IMG CARD */
 
-    .card-movie div {
-        height: inherit;
+    .img-card{
+        display: none;
+    }
+
+
+    /* INFO CARD */
+
+    /* SECTION */
+
+    .section-info-card {
+        font-size: .9rem;
+    }
+
+
+    .head-card {
+        padding: .4em 0;
+    }
+
+    .head-card h3{
+        margin: auto;
+        width: 90%;
+        padding: .4em 0;
+    }
+
+
+    .body-card .info-movie{
+        padding: 0 0 0 1em;
     }
 
 

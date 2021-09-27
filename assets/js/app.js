@@ -24,7 +24,7 @@ d.addEventListener('DOMContentLoaded', () => {
         getUrl(genres);
         getUrl(POPULARITY_URL);
         movieSelect();
-        
+        // d.querySelector('.img-bg-desktop')
 
 
 
@@ -40,7 +40,7 @@ d.addEventListener('DOMContentLoaded', () => {
 function movieSelect() {
 
     d.addEventListener('click', (e) => {
-        // log(e.target);
+        log(e.target);
 
         if (e.target.matches('.tag h3')) {
             const path = '/genre/movie/list';
@@ -91,22 +91,24 @@ function movieSelect() {
 }
 
 function getBackground(src) {
-// log(src)
-// const img = d.querySelector('.active2');
 const targetDiv = containerMain;
 const div = divEfect;
 // log(targetDiv)
 
     if (!div.hasChildNodes()) {   
+     
         
         const imgBg = d.createElement('img');
+        // const btnImg = d.createElement('button');
+        // btnImg.textContent = 'See Trailer';
         imgBg.src = src;
-        imgBg.classList.add('active2');
+        imgBg.classList.toggle('active2');
+        // div.append(btnImg);
         div.append(imgBg);
     }else{
        div.querySelector('.active2').src = src;
     }
-
+    
 }
 
 

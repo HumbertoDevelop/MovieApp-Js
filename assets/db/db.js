@@ -1,4 +1,4 @@
-[{
+/* [{
     "adult": false,
     "backdrop_path": "../img/fondo.jpeg",
     "genre_ids": (4)[28, 12, 14, 35],
@@ -16,4 +16,10 @@
 
 },
 
-]
+] */
+
+// CUERVO 
+
+/* 
+<img data-v-5f24d31c="" src="/_nuxt/img/crow-bede.acf7459.png" alt="" class="tw-absolute crow-icon">
+ */

@@ -10,7 +10,8 @@ const searchInput = d.getElementById('search');
 const container = d.querySelector('.container-main');
 const containerMain = d.querySelector('.container');
 const tagsMovies = d.querySelector('.tags');
-const divEfect = d.querySelector('.div'); 
+const divEfect = d.querySelector('.div');
+const menuCategories = d.querySelector('.btn-categories');
 const log = console.log;
 
 
@@ -40,7 +41,7 @@ d.addEventListener('DOMContentLoaded', () => {
 function movieSelect() {
 
     d.addEventListener('click', (e) => {
-        log(e.target);
+        // log(e.target);
 
         if (e.target.matches('.tag h3')) {
             const path = '/genre/movie/list';
@@ -57,10 +58,24 @@ function movieSelect() {
 
         }
 
+        if (e.target.matches('.fa-bars') || e.target.matches('.burguer-btn')) {
+            log(e.target);
+            menuCategories.classList.toggle("openMenu");
+
+        }
+
+        if (e.target.matches('.btn-categories a')) {
+            // log(e.target.textContent);
+            menuCategories.classList.toggle("openMenu");
+            const query = e.target.textContent;
+            const movie_id = e.target.id;
+            const path = `/movie/${movie_id}/recommendations`;
+            getUrlQuery(path, query);
+        }
+
         if (e.target.matches('.img-bg-desktop')) {
             const targetSrc = e.target.src;
-            
-            getBackground(targetSrc);        
+            getBackground(targetSrc);
             // log(container)
             // log(targetSrc)
 
@@ -91,13 +106,13 @@ function movieSelect() {
 }
 
 function getBackground(src) {
-const targetDiv = containerMain;
-const div = divEfect;
-// log(targetDiv)
+    // const targetDiv = containerMain;
+    const div = divEfect;
+    // log(targetDiv)
 
-    if (!div.hasChildNodes()) {   
-     
-        
+    if (!div.hasChildNodes()) {
+
+
         const imgBg = d.createElement('img');
         // const btnImg = d.createElement('button');
         // btnImg.textContent = 'See Trailer';
@@ -105,10 +120,10 @@ const div = divEfect;
         imgBg.classList.toggle('active2');
         // div.append(btnImg);
         div.append(imgBg);
-    }else{
-       div.querySelector('.active2').src = src;
+    } else {
+        div.querySelector('.active2').src = src;
     }
-    
+
 }
 
 
@@ -128,11 +143,11 @@ function getUrl(path) {
             } else if (path === genres) {
 
                 const results = data.genres;
-                // showTags(results);
+                showTags(results);
                 log(results)
             } else {
                 const result = data.results;
-                // log(result);
+                log(result);
                 showTrailer(result);
             }
 
@@ -142,7 +157,7 @@ function getUrl(path) {
 
 function getUrlQuery(path, query) {
     const url = `https://api.themoviedb.org/3${path}?api_key=1cf50e6248dc270629e802686245c2c8&query=${query}`;
-    // log(url);
+    log(url);
     fetch(url)
         .then((res) => res.json())
         .then((data) => {
@@ -152,14 +167,16 @@ function getUrlQuery(path, query) {
             }
 
 
-             if (data.genres) {
+            if (data.genres) {
                 const url = data.genres;
-                showMovies(url);
-
+                // showMovies(url);
+                log(url)
             }
         });
 
 }
+
+// id: 28, name: 'Action'
 
 
 // SHOW MOVIES
@@ -277,52 +294,40 @@ function getImg(dataImg) {
 }
 
 // SHOW TAGS
-// function showTags(data) {
+function showTags(data) {
 
-//     const div = d.createElement('div');
-//     div.classList.add('btn-categories');
-//     data.forEach(el => {
-//         log(el);
-//         const {id,name} = el;
-//         const h3 = d.createElement('h3');
-//         h3.setAttribute('id',id);
-//         h3.textContent = name;
-//         div.append(h3);
-//         fragment.append(fragment);
-//     });
-//     container.append(fragment);
-// }
+    // const div = d.createElement('div');
+    data.forEach(el => {
+        log(el);
+        const {
+            id,
+            name
+        } = el;
+        const a = d.createElement('a');
+        a.setAttribute('id', id);
+        a.textContent = name;
+        // a.classList.add('btn-categories');
+        fragment.append(a);
+    });
+    menuCategories.append(fragment);
+}
 
 
 // SHOW TRAILER
 function showTrailer(video) {
-    let cont = 0;
-    log(video.length);
-    for (let i = Math.random() * video.length; i <= video.length; i++) {
+    // log(video);
 
-        if (cont < 1) {
+            
+            const link = video[0].key;
+            if (link === '') {
+                alert('Lo siento el video del trailer de esta pelicula fue eliminado de internet');
+            }else{
 
-            const link = srcVideo.key;
-            let newTab = `https://www.youtube.com/embed/${link}`;
-            window.open(newTab, '_blank');
-            cont++;
-        }
-    }
-   
+                let newTab = `https://www.youtube.com/embed/${link}`;
+                window.open(newTab, '_blank');
+            }
+           
+    
+
 }
-
-
-// EFECTS
-
-// MENU BURGUER
-// function menuHamburguer(menu,btnMenu) {
-
-
-//     btnMenu.addEventListener('click', (e) => {
-//             window.scrollTo(0,0);
-//             menu.classList.toggle('activeTags');
-//             btnMenu.classList.toggle('clickBtn');
-
-//     });
-// }
 

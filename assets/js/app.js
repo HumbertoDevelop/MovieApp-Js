@@ -157,10 +157,7 @@ function getUrlQuery(path, query) {
             if (data.results) {
                 const url = data.results;
                 showMovies(url);
-            }
-
-
-            if (data.genres) {
+            }else if (data.genres) {
                 const url = data.genres;
                 // showMovies(url);
                 log(url)

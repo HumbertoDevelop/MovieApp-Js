@@ -12,6 +12,9 @@ const containerMain = d.querySelector('.container');
 const tagsMovies = d.querySelector('.tags');
 const divEfect = d.querySelector('.div');
 const menuCategories = d.querySelector('.btn-categories');
+const imgBg = d.getElementById('imgBg');
+const infoBg = d.querySelector('.div-infoMovie');
+const btnBg = d.getElementById('trailerBg');
 const log = console.log;
 
 
@@ -59,7 +62,7 @@ function movieSelect() {
         }
 
         if (e.target.matches('.fa-bars') || e.target.matches('.burguer-btn')) {
-            log(e.target);
+            // log(e.target);
             menuCategories.classList.toggle("openMenu");
 
         }
@@ -75,9 +78,9 @@ function movieSelect() {
 
         if (e.target.matches('.img-bg-desktop')) {
             const targetSrc = e.target.src;
+            log(e.target);
             getBackground(targetSrc);
             // log(container)
-            // log(targetSrc)
 
         }
     })
@@ -105,25 +108,15 @@ function movieSelect() {
 
 }
 
-function getBackground(src) {
-    // const targetDiv = containerMain;
-    const div = divEfect;
-    // log(targetDiv)
+function getBackground(src,link) {
 
-    if (!div.hasChildNodes()) {
-
-
-        const imgBg = d.createElement('img');
-        // const btnImg = d.createElement('button');
-        // btnImg.textContent = 'See Trailer';
-        imgBg.src = src;
-        imgBg.classList.toggle('active2');
-        // div.append(btnImg);
-        div.append(imgBg);
-    } else {
-        div.querySelector('.active2').src = src;
-    }
-
+    divEfect.innerHTML = 
+    `
+    <div class="div-infoMovie"></div>
+    <img src="${src}" alt="movie.jpeg" id="imgBg">
+    <input class="trailer" type="button" href="${link}" target="_blank" value="Trailer">
+    `
+        
 }
 
 
@@ -144,7 +137,7 @@ function getUrl(path) {
 
                 const results = data.genres;
                 showTags(results);
-                log(results)
+                // log(results)
             } else {
                 const result = data.results;
                 log(result);
@@ -298,7 +291,7 @@ function showTags(data) {
 
     // const div = d.createElement('div');
     data.forEach(el => {
-        log(el);
+        // log(el);
         const {
             id,
             name
@@ -318,13 +311,13 @@ function showTrailer(video) {
     // log(video);
 
             
-            const link = video[0].key;
-            if (link === '') {
-                alert('Lo siento el video del trailer de esta pelicula fue eliminado de internet');
+            const {key} = video[0];
+            if (key === '') {
+                return alert('Lo siento el video del trailer de esta pelicula no se encuentra en la base de datos');
             }else{
-
-                let newTab = `https://www.youtube.com/embed/${link}`;
-                window.open(newTab, '_blank');
+                // log(id+' '+key);
+                let newTab = `https://www.youtube.com/embed/${key}`;
+                return newTab;
             }
            
     

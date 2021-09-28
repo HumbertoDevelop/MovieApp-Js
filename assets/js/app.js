@@ -76,22 +76,20 @@ function movieSelect() {
             getUrlQuery(path, query);
         }
 
-        if (e.target.matches('.img-bg-desktop')) {
+        if (e.target.matches('.img-bg-desktop') && window.screen.availWidth >= 1024) {
             const targetSrc = e.target.src;
             log(e.target);
             getBackground(targetSrc);
-            // log(container)
+        }
 
+        if (e.target.matches('.movie .card-movie .img-card img')) {
+            const currentView = e.target.parentNode.nextSibling.nextSibling.lastElementChild.firstElementChild.querySelector('.overview');
+            const currentImgBg = e.target.parentNode.parentNode.parentNode.querySelector('.img-bg'); 
+            // log(currentImgBg)
+            currentView.classList.toggle('activeOverview');
+            currentImgBg.classList.toggle('activeOverOnImg');
         }
     })
-
-    // function getEfectDescription(targetEfect) {
-    //     const divEfect = d.createElement('div');
-    //     divEfect.classList.toggle('activeDescription');
-    //     targetEfect.append(divEfect);
-
-    //     log('img grande '+targetEfect);
-    // }
 
     searchInput.addEventListener('keyup', (e) => {
         const currentQuery = searchInput.value;

@@ -159,10 +159,9 @@ html {
     height: 100%;
 }
 
-.container-main .movie .img-bg {
-    height: 100%;
-}
+.movie{
 
+}
 /* CARD MOVIE */
 .movie .card-movie {
     position: absolute;

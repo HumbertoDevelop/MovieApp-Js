@@ -91,7 +91,7 @@ function movieSelect() {
 
         }
     })
-
+    
     searchInput.addEventListener('keyup', (e) => {
         const currentQuery = searchInput.value;
         const path = '/search/movie';
@@ -110,9 +110,7 @@ function movieSelect() {
 function getBackground(src, link) {
     divEfect.innerHTML =
         `
-        <div class="div-infoMovie"></div>
         <img src="${src}" alt="movie.jpeg" id="imgBg">
-        <input class="trailer" type="button" href="${link}" target="_blank" value="Trailer">
         `;
 
 
@@ -125,8 +123,8 @@ function getUrl(path) {
     fetch(url)
         .then((res) => res.json())
         .then((data) => {
-            // log(data);
-
+            // log(data.results);
+         
             if (path === POPULARITY_URL) {
 
                 const results = data.results;
@@ -139,7 +137,7 @@ function getUrl(path) {
                 // log(results)
             } else {
                 const result = data.results;
-                log(result);
+                // log(result);
                 showTrailer(result);
             }
 
@@ -156,10 +154,9 @@ function getUrlQuery(path, query) {
             if (data.results) {
                 const url = data.results;
                 showMovies(url);
-            } else if (data.genres) {
-                const url = data.genres;
-                // showMovies(url);
-                log(url)
+            } else {
+                
+                alert('Any Match This Time');
             }
         });
 

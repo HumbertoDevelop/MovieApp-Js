@@ -36,7 +36,8 @@ html {
 
 .container {
     color: var(--white);
-    height: 100vh;
+    max-height: 100vh;
+    height: 100%;
     position: relative;
 }
 
@@ -434,6 +435,7 @@ html {
         flex-direction: column;
         justify-content: space-between;
         width: 100%;
+
         /* background-color: var(--dark-blue); */
     }
 
@@ -500,7 +502,6 @@ html {
         display: flex;
         flex-direction: row;
         position: relative;
-        margin: 1em 0 0 0;
         gap: 0 30px;
     }
 
@@ -514,8 +515,8 @@ html {
 
 
     .container-main .movie .img-bg {
-        width: 150px;
-        height: 200px;
+        width: 100px;
+        height: 150px;
     }
 
     .movie .card-movie {

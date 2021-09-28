@@ -159,9 +159,7 @@ html {
     height: 100%;
 }
 
-.movie{
 
-}
 /* CARD MOVIE */
 .movie .card-movie {
     position: absolute;
@@ -222,6 +220,7 @@ html {
     justify-content: space-around;
     align-items: center;
     width: 100%;
+    padding-bottom: .6em;
 }
 
 .overview {
@@ -296,7 +295,6 @@ html {
     /* HEADER */
 
     .container-header {
-        position: initial;
         margin: auto;
     }
 
@@ -374,6 +372,10 @@ html {
 
 @media (min-width:768px) {
 
+    .container-header{
+        z-index: 3000;
+    }
+
     /* MENU BURGUER */
 
 
@@ -390,7 +392,7 @@ html {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        margin-top: 1em;
+        margin-top: 4.4em;
         /* left: 0; */
         /* bottom: 0; */
         z-index: 2000;

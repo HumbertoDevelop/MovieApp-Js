@@ -431,6 +431,7 @@ html {
         justify-content: initial;
         top: 0px;
         left: 0px;
+        background-color: var(--middle-blue);
     }
 
     .container-header .menu {

@@ -19,11 +19,11 @@ const log = console.log;
 
 
 
+
 // DOM LOADED
-d.addEventListener('DOMContentLoaded', () => {
+d.addEventListener('DOMContentLoaded', (e) => {
 
     try {
-
 
         getUrl(genres);
         getUrl(POPULARITY_URL);
@@ -38,13 +38,12 @@ d.addEventListener('DOMContentLoaded', () => {
     }
 })
 
-
 // SELECT MOVIE
 
 function movieSelect() {
 
     d.addEventListener('click', (e) => {
-        // log(e.target);
+        log(e.target);
 
         if (e.target.matches('.tag h3')) {
             const path = '/genre/movie/list';
@@ -62,7 +61,7 @@ function movieSelect() {
         }
 
         if (e.target.matches('.fa-bars') || e.target.matches('.burguer-btn')) {
-            // log(e.target);
+
             menuCategories.classList.toggle("openMenu");
 
         }
@@ -76,18 +75,20 @@ function movieSelect() {
             getUrlQuery(path, query);
         }
 
-        if (e.target.matches('.img-bg-desktop') && window.screen.availWidth >= 1024) {
+        if (e.target.matches('.img-bg') && window.screen.availWidth >= 1024) {
             const targetSrc = e.target.src;
             log(e.target);
             getBackground(targetSrc);
         }
 
         if (e.target.matches('.movie .card-movie .img-card img')) {
+            log(window.screen.availWidth);
             const currentView = e.target.parentNode.nextSibling.nextSibling.lastElementChild.firstElementChild.querySelector('.overview');
-            const currentImgBg = e.target.parentNode.parentNode.parentNode.querySelector('.img-bg'); 
+            const currentImgBg = e.target.parentNode.parentNode.parentNode.querySelector('.img-bg');
             // log(currentImgBg)
             currentView.classList.toggle('activeOverview');
             currentImgBg.classList.toggle('activeOverOnImg');
+
         }
     })
 
@@ -106,15 +107,15 @@ function movieSelect() {
 
 }
 
-function getBackground(src,link) {
+function getBackground(src, link) {
+    divEfect.innerHTML =
+        `
+        <div class="div-infoMovie"></div>
+        <img src="${src}" alt="movie.jpeg" id="imgBg">
+        <input class="trailer" type="button" href="${link}" target="_blank" value="Trailer">
+        `;
 
-    divEfect.innerHTML = 
-    `
-    <div class="div-infoMovie"></div>
-    <img src="${src}" alt="movie.jpeg" id="imgBg">
-    <input class="trailer" type="button" href="${link}" target="_blank" value="Trailer">
-    `
-        
+
 }
 
 
@@ -155,7 +156,7 @@ function getUrlQuery(path, query) {
             if (data.results) {
                 const url = data.results;
                 showMovies(url);
-            }else if (data.genres) {
+            } else if (data.genres) {
                 const url = data.genres;
                 // showMovies(url);
                 log(url)
@@ -188,7 +189,7 @@ function showMovies(data) {
             div.classList.add('movie');
             div.innerHTML = `
                 
-                <img src="${getImg(poster_path)}" class="img-bg img-bg-desktop" alt="">
+                <img src="${getImg(poster_path)}" class="img-bg" alt="">
                 <div class="card-movie">
                 <div class="img-card">
                 <img src="${getImg(poster_path)}" alt="">
@@ -305,17 +306,19 @@ function showTags(data) {
 function showTrailer(video) {
     // log(video);
 
-            
-            const {key} = video[0];
-            if (key === '') {
-                return alert('Lo siento el video del trailer de esta pelicula no se encuentra en la base de datos');
-            }else{
-                // log(id+' '+key);
-                let newTab = `https://www.youtube.com/embed/${key}`;
-                return newTab;
-            }
-           
-    
+
+    const {
+        key
+    } = video[Math.floor(Math.random() * video.length)];
+    if (key === '') {
+        return alert('Lo siento el video del trailer de esta pelicula no se encuentra en la base de datos');
+    } else {
+        // log(video[Math.floor(Math.random()*video.length)]);
+        let newTab = `https://www.youtube.com/embed/${key}`;
+        window.open(newTab, '_blank');
+        return newTab;
+    }
+
+
 
 }
-

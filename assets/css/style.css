@@ -40,6 +40,7 @@ html {
     position: relative;
 }
 
+
 /* MENU BURGUER */
 
 
@@ -50,8 +51,8 @@ html {
     right: 30px;
     z-index: 3000;
     border-radius: 50%;
-    background-color: var(--gray);
-    padding: 1em;
+    background-color: var(--middle-blue);
+    padding: .5em;
     font-size: 1.5rem;
     cursor: pointer;
 }
@@ -59,10 +60,10 @@ html {
 
 
 .container .btn-categories {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
-    /* left: 0; */
+    left: 0;
     /* bottom: 0; */
     z-index: 2000;
     background-color: var(--dark-blue);
@@ -173,7 +174,7 @@ html {
     /* justify-content: space-between; */
     border-radius: 7px;
     width: 95%;
-    max-height: max-content;
+    max-height: 130px;
     max-width: max-content;
     margin: auto;
     font-size: 1rem;
@@ -239,7 +240,7 @@ html {
 
 .activeOverview{
     opacity: 1;
-    transform: translateY(-370px);
+    transform: translateY(-340px);
 }
 
 .activeOverOnImg{
@@ -413,6 +414,12 @@ html {
         cursor: pointer;
         width: max-content;
 
+    }
+
+       /* IMG CARD */
+
+       .img-card {
+        display: block;
     }
 }
 

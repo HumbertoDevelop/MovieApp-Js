@@ -1,14 +1,12 @@
 :root {
-    --dark-blue: #15263D;
-    --middle-blue: #36405B;
-    --gray-light: #A9B8BE;
-    --gray-ligth-2: #A3979A;
-    --gray: #615C7E;
-    --white: #ffff;
+    --txt-w: #ffffff;
+    --txt-d: #000000;
+    --primary: #bd132f;
+
 }
 
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;1,100&display=swap');
 
 * {
     margin: 0;
@@ -28,14 +26,15 @@ a {
 body,
 html {
     scroll-behavior: smooth;
-    background-color: var(--middle-blue);
+    background-color: var(--primary);
     font-size: 11px;
     height: 100vh;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .container {
     
-    color: var(--white);
+    color: var(--txt-w);
     position: relative;
 }
 
@@ -55,7 +54,8 @@ html {
     right: 30px;
     z-index: 3000;
     border-radius: 50%;
-    background-color: var(--middle-blue);
+    background-color: var(--txt-w);
+    color: var(--primary);
     padding: .5em;
     font-size: 1.5rem;
     cursor: pointer;
@@ -70,7 +70,7 @@ html {
     left: 0;
     /* bottom: 0; */
     z-index: 2000;
-    background-color: var(--dark-blue);
+    background-color: var(--primary);
     opacity: .98;
     text-align: center;
     transition: 2s ease-in-out
@@ -91,7 +91,7 @@ html {
 }
 
 .container .btn-categories a:hover {
-    background-color: var(--middle-blue);
+    background-color: var(--txt-d);
 
 }
 
@@ -99,7 +99,6 @@ html {
 /* HEADER */
 
 .container-header {
-    background-color: var(--middle-blue);
     opacity: .8;
     position: fixed;
     top: 0;
@@ -111,11 +110,13 @@ html {
 }
 
 .container-header .menu {
+    background-color: var(--primary);
     display: flex;
-    width: 90%;
+    width: 100%;
     margin: auto;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    padding:.6em;
 }
 
 /* LOGO */
@@ -128,20 +129,21 @@ html {
 
 .container-header .menu .search {
     border-radius: 10px;
-    background-color: var(--dark-blue);
+    background-color: var(--primary);
+    width: 40%;
 }
 
 .container-header .menu .search #search {
     border: none;
     outline: none;
-    background-color: transparent;
-    /* border-bottom: 1px solid var(--gray-light); */
-    color: var(--gray-light);
+    background-color: inherit;
+    border-bottom: 1px solid var(--txt-d);
+    color: var(--txt-w);
     height: 24px;
     font-size: 1.3rem;
-    padding: 0 .3em;
     text-transform: capitalize;
     font-weight: bold;
+    width: 100%;
     transition: 1s ease-in-out;
 }
 
@@ -149,10 +151,15 @@ html {
     background-color: transparent;
 }
 
+.container-header .menu .search #search::placeholder {
+    color: var(--txt-w);
+}
+
+
 /* MOVIE MAIN */
 
 .container-main {
-    padding-top: 3.5em;
+    padding-top: 4em;
     display: flex;
     flex-direction: column;
 }
@@ -166,21 +173,20 @@ html {
 /* CARD MOVIE */
 .movie .card-movie {
     position: absolute;
-    bottom: 0px;
+    bottom: 3px;
     left: 0;
     right: 0;
     display: flex;
     /* line-height: 1.2; */
-    /* justify-content: space-between; */
+    justify-content: space-between;
     border-radius: 7px;
     width: 95%;
-    height: auto;
+    height: 125px;
     max-width: max-content;
     margin: auto;
-    font-size: 1rem;
     opacity: .9;
-    background-color: var(--dark-blue);
-    color: var(--gray-light);
+    background-color: var(--primary);
+    color: var(--txt-w);
 }
 
 /* IMG CARD */
@@ -216,6 +222,8 @@ html {
 .head-card {
     display: block;
     text-align: center;
+    width: 80%;
+    margin: auto;
 }
 
 .body-card {
@@ -227,7 +235,7 @@ html {
 }
 
 .overview {
-    /* background-color: var(--middle-blue); */
+    /* background-color: var(--primary); */
     color: white;
     position: absolute;
     opacity: 0;
@@ -269,8 +277,8 @@ html {
 
 .trailer {
     padding: .7em;
-    background-color: var(--gray-light);
-    color: var(--middle-blue);
+    background-color: var(--txt-d);
+    color: var(--txt-w);
     border: none;
     outline: none;
     border-radius: 5px;
@@ -292,7 +300,7 @@ html {
 
     body,
     html {
-        background-color: var(--dark-blue);
+        background-color: var(--primary);
     }
 
  
@@ -326,18 +334,21 @@ html {
         justify-content: space-around;
         font-weight: bold;
         font-size: 1rem;
-        letter-spacing: 1.2pt;
+        width: 100%;
     }
 
 
 
     .head-card h3 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
-
+    
     .body-card .info-movie {
-        padding: 0 0 0 1em;
+        width: 70%;
+        margin: auto;
+        font-size: 1rem;
+        padding: 0 0 0 1.3em;
     }
 
     .activeOverview {
@@ -354,10 +365,28 @@ html {
         width: 100%;
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         height: 100vh;
     }
 
+    /* header */
+    .container-header{
+        position: relative;
+    }
 
+    .container-header .menu{
+        margin-top: .3em;
+    }
+
+    .container-header .menu .logo{
+        border-radius: 3px;
+        background-color: var(--txt-d);
+        padding: .3em;
+    }
+
+    .container-header .logo h1{
+        font-size: 3.3rem;
+    }
     /* MENU BURGUER */
 
 
@@ -379,6 +408,7 @@ html {
         /* bottom: 0; */
         width: 100%;
         overflow-x: scroll;
+        overflow-y: hidden;
         z-index: 2000;
         background-color: transparent;
         opacity: .98;
@@ -407,38 +437,24 @@ html {
         display: block;
     }
 
-    .container-header .logo h1{
-        font-size: 3.3rem;
-    }
+   
 
     /* MOVIE MAIN */
-    .container-header {
-        position: relative;
-        margin: initial;
-        background-color: transparent;
-        display: flex;
-        justify-content: initial;
-        top: 0px;
-        left: 0px;
-        background-color: var(--middle-blue);
-    }
-
-    .container-header .menu {
-        
-        display: flex;
-        justify-content: space-between
-            /* margin: auto; */
-    }
-
-    .container-header .menu .logo {
-        display: block;
-        font-size: 2.3rem
-    }
 
     .main {
         width: 100%;
     }
 
+    .btn-categories::-webkit-scrollbar {
+        background-color: inherit;
+        height: 10px;
+        width: 1.2em;
+    }
+    
+    .btn-categories::-webkit-scrollbar-thumb {
+        background-color: var(--txt-d);
+        border-radius: 7px;
+    }
 
     .container-main::-webkit-scrollbar {
         background-color: inherit;
@@ -446,7 +462,7 @@ html {
     }
 
     .container-main::-webkit-scrollbar-thumb {
-        background-color: var(--gray-light);
+        background-color: var(--txt-d);
         border-radius: 7px;
     }
 
@@ -459,7 +475,6 @@ html {
         height: max-content;
         display: flex;
         flex-direction: row;
-        position: relative;
         gap: 0 30px;
     }
 
@@ -467,9 +482,9 @@ html {
 
     .movie {
         cursor: pointer;
+        padding: .2em;
+        background-color: var(--txt-d);
     }
-
-
 
 
     .container-main .movie .img-bg {
@@ -481,113 +496,4 @@ html {
         /* opacity: 1; */
         transform: translateY(-280px);
     }
-}
-
-@media (min-width:1024px) {
-
-    .btn-categories::-webkit-scrollbar {
-        background-color: inherit;
-        height: 10px;
-        width: 1.2em;
-    }
-    
-    .btn-categories::-webkit-scrollbar-thumb {
-        background-color: var(--gray-light);
-        border-radius: 7px;
-    }
-
-    .container .btn-categories {
-        position: relative;
-        top: 0;
-        right: 0;
-        display: flex;
-        flex-wrap: nowrap;
-        align-items: center;
-        margin-top: 0em;
-        width: 99%;
-        margin: auto;
-        opacity: 1;
-    }
-    
-    
-    .container .btn-categories a {
-        padding: .6em 1em;
-        font-size: 2.3rem;
-        cursor: pointer;
-        width: max-content;
-
-    }
-
-    /* MOVIE MAIN */
-    .container-header {
-        position: initial;
-        margin: initial;
-        background-color: transparent;
-        display: flex;
-        justify-content: initial;
-        top: 0px;
-        left: 0px;
-        background-color: var(--middle-blue);
-    }
-
-    .container-header .menu {
-        
-        display: flex;
-        justify-content: space-between
-            /* margin: auto; */
-    }
-
-    .container-header .menu .logo {
-        display: block;
-        font-size: 2.3rem
-    }
-
-    .main {
-        width: 100%;
-    }
-
-
-    .container-main::-webkit-scrollbar {
-        background-color: inherit;
-        height: 10px;
-    }
-
-    .container-main::-webkit-scrollbar-thumb {
-        background-color: var(--gray-light);
-        border-radius: 7px;
-    }
-
-
-
-    .container-main {
-        overflow-x: scroll;
-        overflow-y: hidden;
-        max-width: 100%;
-        height: max-content;
-        display: flex;
-        flex-direction: row;
-        position: relative;
-        gap: 0 30px;
-    }
-
-
-
-    .movie {
-        cursor: pointer;
-    }
-
-
-
-
-    .container-main .movie .img-bg {
-        height: 450px;
-        width: 300px;
-    }
-
-   
-   
-
-
-    /* EFECTS */
-    
 }

@@ -33,7 +33,7 @@ html {
 }
 
 .container {
-    
+    min-width: 320px;
     color: var(--txt-w);
     position: relative;
 }

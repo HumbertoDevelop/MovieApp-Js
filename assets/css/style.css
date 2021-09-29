@@ -340,6 +340,10 @@ html {
         padding: 0 0 0 1em;
     }
 
+    .activeOverview {
+        opacity: 1;
+        transform: translateY(-230px);
+    }
 
 }
 
@@ -471,6 +475,11 @@ html {
     .container-main .movie .img-bg {
         height: 450px;
         width: 300px;
+    }
+
+    .activeOverview {
+        /* opacity: 1; */
+        transform: translateY(-280px);
     }
 }
 

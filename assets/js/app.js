@@ -43,7 +43,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
 function movieSelect() {
 
     d.addEventListener('click', (e) => {
-        log(e.target);
+        // log(e.target);
 
         if (e.target.matches('.tag h3')) {
             const path = '/genre/movie/list';
@@ -75,11 +75,6 @@ function movieSelect() {
             getUrlQuery(path, query);
         }
 
-        if (e.target.matches('.img-bg') && window.screen.availWidth >= 1024) {
-            const targetSrc = e.target.src;
-            log(e.target);
-            getBackground(targetSrc);
-        }
 
         if (e.target.matches('.movie .card-movie .img-card img')) {
             log(window.screen.availWidth);
@@ -89,6 +84,21 @@ function movieSelect() {
             currentView.classList.toggle('activeOverview');
             currentImgBg.classList.toggle('activeOverOnImg');
 
+        }
+
+        if (e.target.matches('.img-bg')) {
+            const currentView = e.target.nextSibling.nextSibling.lastElementChild.lastElementChild.firstElementChild.querySelector('.overview');
+            // log(currentView);
+            currentView.classList.add('activeOverview');
+            e.target.classList.add('activeOverOnImg');
+            
+        }
+        
+        if (e.target.matches('.activeOverview')) {
+            const currentImgBg = e.target.parentNode.parentNode.parentNode.parentNode.previousSibling.previousSibling;
+            // log(currentImgBg);
+            e.target.classList.remove('activeOverview');
+            currentImgBg.classList.remove('activeOverOnImg');
         }
     })
     
@@ -107,14 +117,6 @@ function movieSelect() {
 
 }
 
-function getBackground(src, link) {
-    divEfect.innerHTML =
-        `
-        <img src="${src}" alt="movie.jpeg" id="imgBg">
-        `;
-
-
-}
 
 
 

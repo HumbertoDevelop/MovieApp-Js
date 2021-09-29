@@ -29,16 +29,19 @@ body,
 html {
     scroll-behavior: smooth;
     background-color: var(--middle-blue);
-    overflow-x: hidden;
     font-size: 11px;
     height: 100vh;
 }
 
 .container {
+    
     color: var(--white);
-    max-height: 100vh;
-    height: 100%;
     position: relative;
+}
+
+.container .div {
+    height: 400px;
+    width: 300px;
 }
 
 
@@ -103,7 +106,6 @@ html {
     left: 0;
     right: 0;
     z-index: 1000;
-    height: 40px;
     display: flex;
     align-items: center;
 }
@@ -172,7 +174,7 @@ html {
     /* justify-content: space-between; */
     border-radius: 7px;
     width: 95%;
-    max-height: 130px;
+    height: auto;
     max-width: max-content;
     margin: auto;
     font-size: 1rem;
@@ -182,7 +184,7 @@ html {
 }
 
 /* IMG CARD */
-.img-bg{
+.img-bg {
     transition: 1.7s ease-in-out;
 }
 
@@ -192,9 +194,9 @@ html {
 }
 
 .img-card img {
+    height: 100%;
     object-fit: fill;
     cursor: pointer;
-    height: 100%;
 }
 
 /* INFO CARD */
@@ -237,12 +239,12 @@ html {
     transform: translateY(0px);
 }
 
-.activeOverview{
+.activeOverview {
     opacity: 1;
     transform: translateY(-340px);
 }
 
-.activeOverOnImg{
+.activeOverOnImg {
     opacity: .3;
 }
 
@@ -293,19 +295,7 @@ html {
         background-color: var(--dark-blue);
     }
 
-    /* HEADER */
-
-    .container-header {
-        margin: auto;
-    }
-
-    #search {
-        display: block;
-        background-color: transparent;
-        outline: none;
-        border: none;
-        border-bottom: 1px solid var(--gray-light);
-    }
+ 
 
     /* MOVIE MAIN */
 
@@ -313,7 +303,6 @@ html {
         position: relative;
         width: 100%;
         height: max-content;
-        max-width: 60em;
         margin: auto;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -321,22 +310,6 @@ html {
         color: var(--white);
     }
 
-    /* CARD MOVIE */
-    .movie .card-movie {
-        display: flex;
-        /* line-height: 1.2; */
-        /* justify-content: space-between; */
-        border-radius: 0px;
-        width: 100%;
-        margin: auto;
-        height: auto;
-        font-size: .4rem;
-        opacity: .9;
-        background-color: var(--dark-blue);
-        color: var(--gray-light);
-    }
-
-    /* IMG CARD */
 
     .img-card {
         display: none;
@@ -348,19 +321,18 @@ html {
     /* SECTION */
 
     .section-info-card {
-        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        font-weight: bold;
         font-size: 1rem;
+        letter-spacing: 1.2pt;
     }
 
 
-    .head-card {
-        padding: .4em 0;
-    }
 
     .head-card h3 {
-        margin: auto;
-        width: 90%;
-        padding: .4em 0;
+        font-size: 1.5rem;
     }
 
 
@@ -373,9 +345,14 @@ html {
 
 @media (min-width:768px) {
 
-    .container-header{
-        z-index: 3000;
+    .container {
+        height: max-content;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
     }
+
 
     /* MENU BURGUER */
 
@@ -384,35 +361,37 @@ html {
         display: none;
     }
 
-
+   
 
     .container .btn-categories {
         position: relative;
         top: 0;
         right: 0;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 4.4em;
+        flex-wrap: nowrap;
+        align-items: center;
+        margin-top: 0em;
         /* left: 0; */
         /* bottom: 0; */
+        width: 100%;
+        overflow-x: scroll;
         z-index: 2000;
         background-color: transparent;
         opacity: .98;
-        text-align: center;
-        transition: 2s ease-in-out
+        transition:none;
     }
+    
     
     .openMenu {
         transform: translateY(0px);
     }
     
-    
     .container .btn-categories a {
         text-align: center;
         display: initial;
         padding: .6em 1em;
-        font-size: 1.5rem;
+        margin: 0 .4em;
+        font-size: 1.9rem;
         cursor: pointer;
         width: max-content;
 
@@ -423,37 +402,111 @@ html {
        .img-card {
         display: block;
     }
+
+    .container-header .logo h1{
+        font-size: 3.3rem;
+    }
+
+    /* MOVIE MAIN */
+    .container-header {
+        position: relative;
+        margin: initial;
+        background-color: transparent;
+        display: flex;
+        justify-content: initial;
+        top: 0px;
+        left: 0px;
+        background-color: var(--middle-blue);
+    }
+
+    .container-header .menu {
+        
+        display: flex;
+        justify-content: space-between
+            /* margin: auto; */
+    }
+
+    .container-header .menu .logo {
+        display: block;
+        font-size: 2.3rem
+    }
+
+    .main {
+        width: 100%;
+    }
+
+
+    .container-main::-webkit-scrollbar {
+        background-color: inherit;
+        height: 10px;
+    }
+
+    .container-main::-webkit-scrollbar-thumb {
+        background-color: var(--gray-light);
+        border-radius: 7px;
+    }
+
+
+
+    .container-main {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        max-width: 100%;
+        height: max-content;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        gap: 0 30px;
+    }
+
+
+
+    .movie {
+        cursor: pointer;
+    }
+
+
+
+
+    .container-main .movie .img-bg {
+        height: 450px;
+        width: 300px;
+    }
 }
 
 @media (min-width:1024px) {
 
-
-   
-
-    .container {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 100%;
-
-        /* background-color: var(--dark-blue); */
+    .btn-categories::-webkit-scrollbar {
+        background-color: inherit;
+        height: 10px;
+        width: 1.2em;
     }
-
     
-    .container .div {
-        /* background-color: turquoise; */
-        width: 80%;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-
+    .btn-categories::-webkit-scrollbar-thumb {
+        background-color: var(--gray-light);
+        border-radius: 7px;
     }
 
-    .container .div img {
-        
-        height: 400px;
-        width: 300px;
+    .container .btn-categories {
+        position: relative;
+        top: 0;
+        right: 0;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        margin-top: 0em;
+        width: 99%;
+        margin: auto;
+        opacity: 1;
+    }
+    
+    
+    .container .btn-categories a {
+        padding: .6em 1em;
+        font-size: 2.3rem;
+        cursor: pointer;
+        width: max-content;
+
     }
 
     /* MOVIE MAIN */
@@ -477,6 +530,7 @@ html {
 
     .container-header .menu .logo {
         display: block;
+        font-size: 2.3rem
     }
 
     .main {
@@ -498,7 +552,9 @@ html {
 
     .container-main {
         overflow-x: scroll;
+        overflow-y: hidden;
         max-width: 100%;
+        height: max-content;
         display: flex;
         flex-direction: row;
         position: relative;
@@ -515,87 +571,12 @@ html {
 
 
     .container-main .movie .img-bg {
-        width: 100px;
-        height: 150px;
+        height: 450px;
+        width: 300px;
     }
 
-    .movie .card-movie {
-        position: absolute;
-        top: 0px;
-        left: 0;
-        right: 0;
-        display: none;
-        /* line-height: 1.2; */
-        /* justify-content: space-between; */
-        border-radius: 0px;
-        /* height: 100%; */
-        transition: 1s ease-in-out;
-    }
-
-
-
-
-    /* INFO CARD */
-
-    /* SECTION */
-
-    .section-info-card {
-
-        display: flex;
-        flex-direction: column;
-        font-weight: bold;
-        font-size: 1.3rem;
-        letter-spacing: 1.2pt;
-    }
-
-
-    .head-card {
-        display: none;
-    }
-
-    .body-card {
-        flex-direction: column;
-        font-size: 1.5rem;
-    }
-
-    .overview {
-        height: 150px;
-        font-size: 1.37rem;
-        display: none;
-        overflow-y: hidden;
-        transition: .8s ease-in-out;
-    }
-
-    .overview:hover {
-        height: 0;
-        font-size: 0;
-    }
-
-    .card-movie:hover {
-        height: initial;
-    }
-
-    .language {
-        display: none;
-    }
-
-    .star {
-        display: none;
-
-    }
-
-    .release {
-        display: none;
-
-    }
-
-    /* RATE MOVIE */
-
-    .rate-movie {
-        position: absolute;
-
-        display: block;
-    }
+   
+   
 
 
     /* EFECTS */

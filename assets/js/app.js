@@ -100,6 +100,16 @@ function movieSelect() {
             e.target.classList.remove('activeOverview');
             currentImgBg.classList.remove('activeOverOnImg');
         }
+
+        if (e.target.matches('.fa-search')) {
+            if (searchInput.style.width == '100%') {
+                
+                searchInput.style.width = '0%';
+            } else {
+                searchInput.style.width = '100%';
+                
+            }
+        }
     })
     
     searchInput.addEventListener('keyup', (e) => {

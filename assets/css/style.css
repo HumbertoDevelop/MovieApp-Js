@@ -64,14 +64,13 @@ html {
 
 .container .btn-categories {
     position: fixed;
-    top: 40px;
+    top: 0px;
     right: 0;
     /* bottom: 0; */
     height: 86vh;
     overflow-y: scroll;
     z-index: 2000;
     background-color: var(--primary);
-    opacity: .98;
     text-align: center;
     transition: 1.3s ease-in-out
 }

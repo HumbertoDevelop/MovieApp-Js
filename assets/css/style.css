@@ -252,6 +252,8 @@ html {
     color: white;
     position: absolute;
     /* text-align: justify; */
+    overflow-y: hidden;
+    height: 295px;
     line-height: 1.33;
     width: 80%;
     opacity: 0;

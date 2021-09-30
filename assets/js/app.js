@@ -27,7 +27,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
         getUrl(genres);
         getUrl(POPULARITY_URL);
-        movieSelect();
+        funDom();
+        hiddenText();
         // d.querySelector('.img-bg-desktop')
 
 
@@ -38,9 +39,14 @@ d.addEventListener('DOMContentLoaded', (e) => {
     }
 })
 
+function hidden() {
+    
+}
+
 // SELECT MOVIE
 
-function movieSelect() {
+function funDom() {
+
 
     d.addEventListener('click', (e) => {
         // log(e.target);

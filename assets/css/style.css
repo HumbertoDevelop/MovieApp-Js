@@ -189,6 +189,7 @@ html {
 }
 
 
+
 /* CARD MOVIE */
 .movie .card-movie {
     position: absolute;
@@ -294,6 +295,11 @@ html {
     font-size: 4rem;
     text-align: center;
     padding: 0 .3em;
+}
+
+.trailer:hover{
+    background-color: var(--txt-w);
+    color: var(--txt-d);
 }
 
 /* BTN TRAILER */
@@ -509,8 +515,6 @@ html {
 
     .movie {
         cursor: pointer;
-        padding: .2em;
-        background-color: var(--txt-d);
     }
 
 

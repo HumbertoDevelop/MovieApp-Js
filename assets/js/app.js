@@ -28,7 +28,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
         getUrl(genres);
         getUrl(POPULARITY_URL);
         funDom();
-        // d.querySelector('.img-bg-desktop')
 
 
 
@@ -297,7 +296,6 @@ function getImg(dataImg) {
 // SHOW TAGS
 function showTags(data) {
 
-    // const div = d.createElement('div');
     data.forEach(el => {
         // log(el);
         const {
@@ -307,7 +305,6 @@ function showTags(data) {
         const a = d.createElement('a');
         a.setAttribute('id', id);
         a.textContent = name;
-        // a.classList.add('btn-categories');
         fragment.append(a);
     });
     menuCategories.append(fragment);

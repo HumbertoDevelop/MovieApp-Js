@@ -49,7 +49,7 @@ html {
 .container .burguer-btn {
 
     position: fixed;
-    bottom: 25px;
+    bottom: 15px;
     right: 40px;
     z-index: 3000;
     border-radius: 50%;

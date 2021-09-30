@@ -130,7 +130,10 @@ html {
 .container-header .menu .logo {
     border: 1px solid var(--txt-w);
     font-size: 1.2rem;
-    padding-left: .6em;
+}
+
+.container-header .menu .logo h1{
+    padding: .2em;
 }
 
 /* SEARCH */
@@ -144,6 +147,8 @@ html {
     align-items: center;
     padding-right: .6em;
 }
+
+
 
 .container-header .menu .search #search {
     border: none;
@@ -179,7 +184,7 @@ html {
 .container-main {
     display: flex;
     flex-direction: column;
-    padding-top: 5em;
+    padding-top: 6em;
 }
 
 .container-main .movie {
@@ -413,9 +418,7 @@ html {
         padding: .3em;
     }
 
-    .container-header .logo h1 {
-        font-size: 3.3rem;
-    }
+   
 
     /* MENU BURGUER */
 

@@ -112,10 +112,10 @@ html {
     z-index: 1000;
     display: flex;
     align-items: center;
+    background-color: var(--primary);
 }
 
 .container-header .menu {
-    background-color: var(--primary);
     display: flex;
     width: 90%;
     padding: 1em 0;
@@ -192,13 +192,13 @@ html {
 /* CARD MOVIE */
 .movie .card-movie {
     position: absolute;
-    bottom: 3px;
+    bottom: 1px;
     left: 0;
     right: 0;
     display: flex;
     /* line-height: 1.2; */
     justify-content: space-between;
-    border-radius: 4px;
+    border-radius: 6px;
     height: 125px;
     max-width: max-content;
     margin: auto;
@@ -355,8 +355,8 @@ html {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        font-weight: bold;
         font-size: 1rem;
+        font-weight: bold;
         width: 100%;
     }
 

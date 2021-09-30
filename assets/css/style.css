@@ -118,7 +118,7 @@ html {
     background-color: var(--primary);
     display: flex;
     width: 90%;
-    height: 42px;
+    padding: 1em 0;
     margin: auto;
     align-items: center;
     justify-content: space-between;
@@ -129,6 +129,7 @@ html {
 /* LOGO */
 
 .container-header .menu .logo {
+    border: 1px solid var(--txt-w);
     font-size: 1.2rem;
     padding-left: .6em;
 }

@@ -94,7 +94,6 @@ html {
 .container .btn-categories a:hover {
     background-color: var(--txt-w);
     color: var(--txt-d)
-
 }
 
 
@@ -114,13 +113,13 @@ html {
 .container-header .menu {
     background-color: var(--primary);
     display: flex;
-    width: 100%;
+    width: 90%;
     height: 42px;
     margin: auto;
     align-items: center;
     justify-content: space-between;
     align-items: center;
-    
+
 }
 
 /* LOGO */
@@ -139,7 +138,7 @@ html {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding-right:  .6em;
+    padding-right: .6em;
 }
 
 .container-header .menu .search #search {
@@ -156,10 +155,10 @@ html {
     transition: 2s ease-in-out;
 }
 
-.container-header .menu .search .fa-search{
+.container-header .menu .search .fa-search {
     cursor: pointer;
     margin-left: .6em;
-    font-size: 1.3em;
+    font-size: 1.67em;
 }
 
 .container-header .menu .search #search:focus {
@@ -252,10 +251,13 @@ html {
     /* background-color: var(--primary); */
     color: white;
     position: absolute;
+    /* text-align: justify; */
+    line-height: 1.33;
+    width: 80%;
     opacity: 0;
     z-index: -1;
-    top: 0;
-    left: 0;
+    top: 0px;
+    left: 30px;
     right: 0;
     transition: 1.6s ease-in-out;
     transform: translateY(0px);
@@ -267,7 +269,7 @@ html {
 }
 
 .activeOverOnImg {
-    opacity: .3;
+    opacity: .1;
 }
 
 
@@ -317,7 +319,7 @@ html {
         background-color: var(--primary);
     }
 
- 
+
 
     /* MOVIE MAIN */
 
@@ -357,12 +359,16 @@ html {
         font-size: 1.3rem;
     }
 
-    
+
     .body-card .info-movie {
         width: 70%;
         margin: auto;
         font-size: 1rem;
         padding: 0 0 0 1.3em;
+    }
+
+    .overview{
+        top: 40px;
     }
 
     .activeOverview {
@@ -384,22 +390,23 @@ html {
     }
 
     /* header */
-    .container-header{
+    .container-header {
         position: relative;
     }
 
-    .container-header .menu{
+    .container-header .menu {
         margin-top: .3em;
     }
 
-    .container-header .menu .logo{
+    .container-header .menu .logo {
         border-radius: 3px;
         padding: .3em;
     }
 
-    .container-header .logo h1{
+    .container-header .logo h1 {
         font-size: 3.3rem;
     }
+
     /* MENU BURGUER */
 
 
@@ -407,7 +414,7 @@ html {
         display: none;
     }
 
-   
+
 
     .container .btn-categories {
         position: relative;
@@ -419,14 +426,14 @@ html {
 
         overflow-x: scroll;
         overflow-y: hidden;
-        transition:none;
+        transition: none;
     }
-    
-    
+
+
     .openMenu {
         transform: translateY(0px);
     }
-    
+
     .container .btn-categories a {
         text-align: center;
         display: initial;
@@ -438,13 +445,13 @@ html {
 
     }
 
-       /* IMG CARD */
+    /* IMG CARD */
 
-       .img-card {
+    .img-card {
         display: block;
     }
 
-   
+
 
     /* MOVIE MAIN */
 
@@ -457,7 +464,7 @@ html {
         height: 10px;
         width: 1.2em;
     }
-    
+
     .btn-categories::-webkit-scrollbar-thumb {
         background-color: var(--txt-w);
         border-radius: 7px;
@@ -499,16 +506,20 @@ html {
         width: 300px;
     }
 
-    .container-main{
+    .container-main {
         padding: 0 .8em
     }
 
-    .movie .card-movie{
+    .movie .card-movie {
         width: 100%;
     }
 
-    .activeOverview {
-        /* opacity: 1; */
-        transform: translateY(-280px);
+    .overview {
+        font-size: 1.18rem;
+        font-weight: 100;
+        line-height: 1.33;
+        top: -80px;
     }
+
+    
 }

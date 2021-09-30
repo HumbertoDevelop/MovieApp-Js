@@ -427,12 +427,18 @@ html {
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
+        height: max-content;
+        
         /* left: 0; */
         /* bottom: 0; */
 
         overflow-x: scroll;
         overflow-y: hidden;
         transition: none;
+    }
+
+    .container .btn-categories a{
+        border-bottom: none;
     }
 
 

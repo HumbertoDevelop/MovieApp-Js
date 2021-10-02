@@ -10,154 +10,107 @@ const searchInput = d.getElementById('search');
 const container = d.querySelector('.container-main');
 const containerMain = d.querySelector('.container');
 const tagsMovies = d.querySelector('.tags');
-const divEfect = d.querySelector('.div');
+const modal = d.querySelector('.modal');
 const menuCategories = d.querySelector('.btn-categories');
 const imgBg = d.getElementById('imgBg');
 const infoBg = d.querySelector('.div-infoMovie');
 const btnBg = d.getElementById('trailerBg');
 const log = console.log;
 
-
-
-
 // DOM LOADED
 d.addEventListener('DOMContentLoaded', (e) => {
-
-    try {
-
-        getUrl(genres);
-        getUrl(POPULARITY_URL);
-        funDom();
-
-
-
-
-    } catch (err) {
-        console.error(`Puede ser el internet o ${err}`);
-    }
-})
-
-
+    getUrl(genres);
+    getUrl(POPULARITY_URL);
+    funDom();
+});
 
 // SELECT MOVIE
-
 function funDom() {
 
-
     d.addEventListener('click', (e) => {
-        // log(e.target);
-
         if (e.target.matches('.tag h3')) {
             const path = '/genre/movie/list';
             const currentQuery = e.target.textContent;
             getUrlQuery(path, currentQuery);
-        }
-
+        };
 
         if (e.target.matches('.trailer')) {
             const trailerId = e.target.id;
             const path = `/movie/${trailerId}/videos`;
-
             getUrl(path);
-
-        }
+        };
 
         if (e.target.matches('.fa-bars') || e.target.matches('.burguer-btn')) {
-
             menuCategories.classList.toggle("openMenu");
-
-        }
+        };
 
         if (e.target.matches('.btn-categories a')) {
-            // log(e.target.textContent);
             menuCategories.classList.toggle("openMenu");
             const query = e.target.textContent;
             const movie_id = e.target.id;
             const path = `/movie/${movie_id}/recommendations`;
             getUrlQuery(path, query);
-        }
-
+        };
 
         if (e.target.matches('.movie .card-movie .img-card img')) {
             log(window.screen.availWidth);
             const currentView = e.target.parentNode.nextSibling.nextSibling.lastElementChild.firstElementChild.querySelector('.overview');
             const currentImgBg = e.target.parentNode.parentNode.parentNode.querySelector('.img-bg');
-            // log(currentImgBg)
             currentView.classList.toggle('activeOverview');
             currentImgBg.classList.toggle('activeOverOnImg');
-
-        }
+        };
 
         if (e.target.matches('.img-bg')) {
             const currentView = e.target.nextSibling.nextSibling.lastElementChild.lastElementChild.firstElementChild.querySelector('.overview');
-            // log(currentView);
             currentView.classList.add('activeOverview');
             e.target.classList.add('activeOverOnImg');
-            
-        }
-        
+        };
+
         if (e.target.matches('.activeOverview')) {
             const currentImgBg = e.target.parentNode.parentNode.parentNode.parentNode.previousSibling.previousSibling;
-            // log(currentImgBg);
             e.target.classList.remove('activeOverview');
             currentImgBg.classList.remove('activeOverOnImg');
-        }
+        };
 
         if (e.target.matches('.fa-search')) {
             if (searchInput.style.width == '100%') {
-                
                 searchInput.style.width = '0%';
             } else {
                 searchInput.style.width = '100%';
-                
-            }
+            };
+        };
+
+        if(e.target.matches('.closeModal')){
+            e.target.parentNode.classList.remove('activeModal');
         }
-    })
-    
+    });
+
     searchInput.addEventListener('keyup', (e) => {
         const currentQuery = searchInput.value;
         const path = '/search/movie';
-
         if (e.key === 'Enter') {
-            // log(currentQuery);
-
-            getUrlQuery(path, currentQuery)
-
-        }
-    })
-
-
-}
-
-
-
+            getUrlQuery(path, currentQuery);
+        };
+    });
+};
 
 function getUrl(path) {
     const url = `https://api.themoviedb.org/3${path}?api_key=1cf50e6248dc270629e802686245c2c8`;
     fetch(url)
         .then((res) => res.json())
         .then((data) => {
-            // log(data.results);
-         
             if (path === POPULARITY_URL) {
-
                 const results = data.results;
                 showMovies(results);
-                // log(results)
             } else if (path === genres) {
-
                 const results = data.genres;
                 showTags(results);
-                // log(results)
             } else {
                 const result = data.results;
-                // log(result);
                 showTrailer(result);
-            }
-
+            };
         });
-
-}
+};
 
 function getUrlQuery(path, query) {
     const url = `https://api.themoviedb.org/3${path}?api_key=1cf50e6248dc270629e802686245c2c8&query=${query}`;
@@ -169,20 +122,24 @@ function getUrlQuery(path, query) {
                 const url = data.results;
                 showMovies(url);
             } else {
-                
-                alert('Any Match This Time');
+                myModal();
             }
         });
+};
 
+// myModal
+function myModal() {
+    modal.classList.add('activeModal');
+    return modal.innerHTML =
+        `
+            <h3>Oops❗❗❗</h3>
+            <p>Something went <span class="wrong">wrong</span> apparently, your search can not be done. Maybe this option is in maintenance</p>
+            <button class="closeModal">Ok</button>
+    `;
 }
-
-// id: 28, name: 'Action'
-
 
 // SHOW MOVIES
 function showMovies(data) {
-
-    // log(data)
     container.innerHTML = '';
     data.forEach(el => {
         const {
@@ -195,11 +152,10 @@ function showMovies(data) {
             vote_average
         } = el;
         const div = d.createElement('div');
-        // log(poster_path)
         if (poster_path && id && title && original_language && vote_average && release_date && overview) {
             div.classList.add('movie');
+
             div.innerHTML = `
-                
                 <img src="${getImg(poster_path)}" class="img-bg" alt="">
                 <div class="card-movie">
                 <div class="img-card">
@@ -224,21 +180,16 @@ function showMovies(data) {
                 </section>
                 </div>
                 `;
-
             fragment.append(div);
             container.append(fragment);
-        }
-
-
-
+        };
     });
-
-}
+};
 
 // number round
 function numberRound(vote) {
     return Math.floor(vote);
-}
+};
 
 // stars movie
 function getStar(vote) {
@@ -285,19 +236,17 @@ function getStar(vote) {
             break;
     }
     return txt;
-}
+};
 
 // GET IMG URL
 function getImg(dataImg) {
     const img = `https://image.tmdb.org/t/p/w500${dataImg}`;
     return img;
-}
+};
 
 // SHOW TAGS
 function showTags(data) {
-
     data.forEach(el => {
-        // log(el);
         const {
             id,
             name
@@ -308,26 +257,18 @@ function showTags(data) {
         fragment.append(a);
     });
     menuCategories.append(fragment);
-}
-
+};
 
 // SHOW TRAILER
 function showTrailer(video) {
-    // log(video);
-
-
     const {
         key
     } = video[Math.floor(Math.random() * video.length)];
     if (key === '') {
         return alert('Lo siento el video del trailer de esta pelicula no se encuentra en la base de datos');
     } else {
-        // log(video[Math.floor(Math.random()*video.length)]);
         let newTab = `https://www.youtube.com/embed/${key}`;
         window.open(newTab, '_blank');
         return newTab;
     }
-
-
-
-}
+};

@@ -5,7 +5,6 @@
 
 }
 
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,700;1,100&display=swap');
 
 * {
@@ -23,11 +22,13 @@ a {
     color: inherit;
 }
 
-body,
-html {
+html{
+    font-size: 11px;
+}
+
+body{
     scroll-behavior: smooth;
     background-color: var(--primary);
-    font-size: 11px;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -42,15 +43,11 @@ html {
     width: 300px;
 }
 
-
 /* MENU BURGUER */
-
-
 .container .burguer-btn {
-
     position: fixed;
-    bottom: 15px;
-    right: 40px;
+    bottom: 1.5em;
+    right: 4em;
     z-index: 3000;
     border-radius: 50%;
     background-color: var(--txt-w);
@@ -60,13 +57,10 @@ html {
     cursor: pointer;
 }
 
-
-
 .container .btn-categories {
     position: fixed;
     top: 0px;
-    right: 0;
-    /* bottom: 0; */
+    right: 0em;
     height: 86vh;
     overflow-y: scroll;
     z-index: 2000;
@@ -75,10 +69,13 @@ html {
     transition: 1.3s ease-in-out
 }
 
-.openMenu {
-    transform: translateX(130px);
+.container .btn-categories::-webkit-scrollbar {
+    display: none;
 }
 
+.openMenu {
+    transform: translateX(13em);
+}
 
 .container .btn-categories a {
     display: block;
@@ -90,7 +87,6 @@ html {
     text-align: justify;
     width: 100%;
     margin-left: .4em;
-
 }
 
 .container .btn-categories a:hover {
@@ -98,9 +94,7 @@ html {
     color: var(--txt-d)
 }
 
-
 /* HEADER */
-
 .container-header {
     opacity: .8;
     position: fixed;
@@ -121,11 +115,9 @@ html {
     align-items: center;
     justify-content: space-between;
     align-items: center;
-
 }
 
 /* LOGO */
-
 .container-header .menu .logo {
     border: 1px solid var(--txt-w);
     font-size: 1.2rem;
@@ -136,7 +128,6 @@ html {
 }
 
 /* SEARCH */
-
 .container-header .menu .search {
     border-radius: 10px;
     background-color: transparent;
@@ -147,20 +138,18 @@ html {
     padding-right: .6em;
 }
 
-
-
 .container-header .menu .search #search {
     border: none;
     outline: none;
     background-color: inherit;
     border-bottom: 1px solid var(--txt-w);
     color: var(--txt-w);
-    height: 24px;
+    height: 2em;
     font-size: 1.3rem;
     text-transform: capitalize;
     font-weight: bold;
     width: 0%;
-    transition: 2s ease-in-out;
+    transition: 1s ease-in;
 }
 
 .container-header .menu .search .fa-search {
@@ -177,9 +166,7 @@ html {
     color: var(--txt-w);
 }
 
-
 /* MOVIE MAIN */
-
 .container-main {
     display: flex;
     flex-direction: column;
@@ -191,19 +178,16 @@ html {
     height: 100%;
 }
 
-
-
 /* CARD MOVIE */
 .movie .card-movie {
     position: absolute;
-    bottom: 1px;
+    bottom: 0;
     left: 0;
     right: 0;
     display: flex;
-    /* line-height: 1.2; */
     justify-content: space-between;
-    border-radius: 6px;
-    height: 125px;
+    border-radius: .3em;
+    height: 10em;
     max-width: max-content;
     margin: auto;
     opacity: .9;
@@ -227,10 +211,7 @@ html {
     cursor: pointer;
 }
 
-/* INFO CARD */
-
-/* SECTION */
-
+/* INFO CARD SECTION*/
 .section-info-card {
     display: flex;
     flex-direction: column;
@@ -239,7 +220,6 @@ html {
     font-size: 1.3rem;
     letter-spacing: 1.2pt;
 }
-
 
 .head-card {
     display: block;
@@ -257,18 +237,16 @@ html {
 }
 
 .overview {
-    /* background-color: var(--primary); */
     color: white;
     position: absolute;
-    /* text-align: justify; */
     overflow-y: hidden;
-    height: 295px;
+    height: 16em;
     line-height: 1.33;
     width: 80%;
     opacity: 0;
     z-index: -1;
-    top: 0px;
-    left: 30px;
+    top: 0;
+    left: 2.80em;
     right: 0;
     transition: 1.6s ease-in-out;
     transform: translateY(0px);
@@ -276,21 +254,18 @@ html {
 
 .activeOverview {
     opacity: 1;
-    transform: translateY(-340px);
+    transform: translateY(-30em);
 }
 
 .activeOverOnImg {
     opacity: .1;
 }
 
-
 .language {
     text-transform: capitalize;
 }
 
-
 /* RATE MOVIE */
-
 .rate-movie {
     display: flex;
     flex-direction: column;
@@ -306,28 +281,20 @@ html {
 }
 
 /* BTN TRAILER */
-
 .trailer {
     padding: .7em;
     background-color: var(--txt-d);
     color: var(--txt-w);
     border: none;
     outline: none;
-    border-radius: 5px;
+    border-radius: .5em;
     font-size: 1.1rem;
     font-weight: bold;
     letter-spacing: .5pt;
     cursor: pointer;
 }
 
-
-
-
-
-
-
 /* MEDIA QUERIES */
-
 @media (min-width:425px) {
 
     body,
@@ -335,10 +302,7 @@ html {
         background-color: var(--primary);
     }
 
-
-
     /* MOVIE MAIN */
-
     .container-main {
         position: relative;
         width: 100%;
@@ -346,20 +310,15 @@ html {
         margin: auto;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 20px 10px;
+        gap: 2em 1em;
         color: var(--white);
     }
-
 
     .img-card {
         display: none;
     }
 
-
-    /* INFO CARD */
-
-    /* SECTION */
-
+    /* INFO CARD SECTION*/
     .section-info-card {
         display: flex;
         flex-direction: column;
@@ -369,12 +328,9 @@ html {
         width: 100%;
     }
 
-
-
     .head-card h3 {
         font-size: 1.3rem;
     }
-
 
     .body-card .info-movie {
         width: 70%;
@@ -383,12 +339,12 @@ html {
     }
 
     .overview{
-        top: 40px;
+        top: 4em;
     }
 
     .activeOverview {
         opacity: 1;
-        transform: translateY(-230px);
+        transform: translateY(-25em);
     }
 
 }
@@ -402,7 +358,6 @@ html {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        
     }
 
     /* header */
@@ -415,20 +370,14 @@ html {
     }
 
     .container-header .menu .logo {
-        border-radius: 3px;
+        border-radius: .3em;
         padding: .3em;
     }
 
-   
-
     /* MENU BURGUER */
-
-
     .container .burguer-btn {
         display: none;
     }
-
-
 
     .container .btn-categories {
         position: relative;
@@ -436,10 +385,6 @@ html {
         flex-wrap: nowrap;
         align-items: center;
         height: max-content;
-        
-        /* left: 0; */
-        /* bottom: 0; */
-
         overflow-x: scroll;
         overflow-y: hidden;
         transition: none;
@@ -448,7 +393,6 @@ html {
     .container .btn-categories a{
         border-bottom: none;
     }
-
 
     .openMenu {
         transform: translateY(0px);
@@ -462,45 +406,38 @@ html {
         font-size: 1.9rem;
         cursor: pointer;
         width: max-content;
-
     }
 
     /* IMG CARD */
-
     .img-card {
         display: block;
     }
 
-
-
     /* MOVIE MAIN */
-
     .main {
         width: 100%;
     }
 
     .btn-categories::-webkit-scrollbar {
         background-color: inherit;
-        height: 10px;
+        height: 1em;
         width: 1.2em;
     }
 
     .btn-categories::-webkit-scrollbar-thumb {
         background-color: var(--txt-w);
-        border-radius: 7px;
+        border-radius: .7em;
     }
 
     .container-main::-webkit-scrollbar {
         background-color: inherit;
-        height: 10px;
+        height: 1em;
     }
 
     .container-main::-webkit-scrollbar-thumb {
         background-color: var(--txt-w);
-        border-radius: 7px;
+        border-radius: .7em;
     }
-
-
 
     .container-main {
         overflow-x: scroll;
@@ -509,19 +446,16 @@ html {
         max-width: 100%;
         display: flex;
         flex-direction: row;
-        gap: 0 30px;
+        gap: 0 3em;
     }
-
-
 
     .movie {
         cursor: pointer;
     }
 
-
     .container-main .movie .img-bg {
-        height: 450px;
-        width: 300px;
+        height: 45em;
+        width: 30em;
     }
 
     .container-main {
@@ -536,8 +470,12 @@ html {
         font-size: 1.18rem;
         font-weight: 100;
         line-height: 1.33;
-        top: -80px;
+        top: -8em;
     }
 
+    .activeOverview {
+        opacity: 1;
+        transform: translateY(-20em);
+    }
     
 }

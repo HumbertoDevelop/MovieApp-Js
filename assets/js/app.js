@@ -42,8 +42,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
 // SELECT MOVIE
 
 function funDom() {
-
-
+    window.scroll(0, 0);
     d.addEventListener('click', (e) => {
         // log(e.target);
 
@@ -79,7 +78,6 @@ function funDom() {
 
 
         if (e.target.matches('.movie .card-movie .img-card img')) {
-            log(window.screen.availWidth);
             const currentView = e.target.parentNode.nextSibling.nextSibling.lastElementChild.firstElementChild.querySelector('.overview');
             const currentImgBg = e.target.parentNode.parentNode.parentNode.querySelector('.img-bg');
             // log(currentImgBg)
@@ -109,8 +107,11 @@ function funDom() {
                 searchInput.style.width = '0%';
             } else {
                 searchInput.style.width = '100%';
-                
-            }
+            };
+        };
+
+        if (e.target.matches('.closeModal')) {
+            e.target.parentNode.classList.remove('activeModal');
         }
     })
     
@@ -161,7 +162,6 @@ function getUrl(path) {
 
 function getUrlQuery(path, query) {
     const url = `https://api.themoviedb.org/3${path}?api_key=1cf50e6248dc270629e802686245c2c8&query=${query}`;
-    log(url);
     fetch(url)
         .then((res) => res.json())
         .then((data) => {
@@ -244,6 +244,19 @@ function numberRound(vote) {
 function getStar(vote) {
 
     let txt;
+    for (let i = 0; i < numberRound(vote); i++) {
+        if (numberRound(vote) < 0) {
+            txt = 'No ranking yet';
+            return txt;
+        }else{
+            txt += '⭐';
+        }
+    }
+
+    return txt;
+
+    
+    /* 
     switch (numberRound(vote)) {
         case 0:
             txt = 'No ranking yet';
@@ -284,8 +297,8 @@ function getStar(vote) {
             txt = 'No ranking yet';
             break;
     }
-    return txt;
-}
+    return txt; */
+};
 
 // GET IMG URL
 function getImg(dataImg) {

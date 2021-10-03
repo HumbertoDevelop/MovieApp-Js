@@ -183,17 +183,52 @@ function showMovies(data) {
     });
 };
 
+// GET IMG URL
+function getImg(dataImg) {
+    const img = `https://image.tmdb.org/t/p/w500${dataImg}`;
+    return img;
+};
+
+// SHOW TAGS
+function showTags(data) {
+    data.forEach(el => {
+        const {
+            id,
+            name
+        } = el;
+        const a = d.createElement('a');
+        a.setAttribute('id', id);
+        a.textContent = name;
+        fragment.append(a);
+    });
+    menuCategories.append(fragment);
+};
+
+// SHOW TRAILER
+function showTrailer(video) {
+    const {
+        key
+    } = video[Math.floor(Math.random() * video.length)];
+    if (key === '') {
+        return alert('Lo siento el video del trailer de esta pelicula no se encuentra en la base de datos');
+    } else {
+        let newTab = `https://www.youtube.com/embed/${key}`;
+        window.open(newTab, '_blank');
+        return newTab;
+    };
+};
+
 // number round
 function numberRound(vote) {
     return Math.floor(vote);
 };
 
 // stars movie
-function getStar(vote) {
+function getStar(vote){
 
     let txt;
     for (let i = 0; i < numberRound(vote); i++) {
-        if (numberRound(vote) < 0) {
+        if (numberRound(vote) <= 0) {
             txt = 'No ranking yet';
             return txt;
         }else{
@@ -203,6 +238,7 @@ function getStar(vote) {
 
     return txt;
 
+};
     
     /* 
     switch (numberRound(vote)) {
@@ -244,41 +280,7 @@ function getStar(vote) {
 
             txt = 'No ranking yet';
             break;
-    }
-    return txt;
-};
-
-// GET IMG URL
-function getImg(dataImg) {
-    const img = `https://image.tmdb.org/t/p/w500${dataImg}`;
-    return img;
-};
-
-// SHOW TAGS
-function showTags(data) {
-    data.forEach(el => {
-        const {
-            id,
-            name
-        } = el;
-        const a = d.createElement('a');
-        a.setAttribute('id', id);
-        a.textContent = name;
-        fragment.append(a);
-    });
-    menuCategories.append(fragment);
-};
-
-// SHOW TRAILER
-function showTrailer(video) {
-    const {
-        key
-    } = video[Math.floor(Math.random() * video.length)];
-    if (key === '') {
-        return alert('Lo siento el video del trailer de esta pelicula no se encuentra en la base de datos');
-    } else {
-        let newTab = `https://www.youtube.com/embed/${key}`;
-        window.open(newTab, '_blank');
-        return newTab;
-    }
-};
+        }
+        return txt;
+    };
+    */

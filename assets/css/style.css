@@ -360,6 +360,13 @@ body {
 }
 
 /* MEDIA QUERIES */
+
+@media (min-width:320px) {
+    .img-card{
+        display: none;
+    }
+}
+
 @media (min-width:425px) {
 
     body,
@@ -398,9 +405,13 @@ body {
     }
 
     .body-card .info-movie {
-        width: 70%;
+        width: 60%;
         margin: auto;
         font-size: 1rem;
+    }
+
+    .info-movie .star{
+        display: none;
     }
 
     .overview {
@@ -542,5 +553,9 @@ body {
         opacity: 1;
         transform: translateY(-20em);
     }
-
+    
+    /*INFO CARD SECTION*/
+    .info-movie .star{
+        display: block;
+    }
 }
